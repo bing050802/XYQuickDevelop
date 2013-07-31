@@ -50,10 +50,22 @@ dispatch_once( &once, ^{ __singleton__ = [[__class alloc] init]; } ); \
 return __singleton__; \
 }
 
+/**************************************************************/
+// GDC 多线程
+#define Common_MainFun(aFun) dispatch_async( dispatch_get_main_queue(), ^(void){aFun;} );
+#define Common_MainBlock(block) dispatch_async( dispatch_get_main_queue(), block );
+
+#define Common_BackGroundBlock(block) dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block );
+#define Common_BackGroundFun(aFun) dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){aFun;} );
+
+/**************************************************************/
+// block
+#pragma mark 待完善
 typedef void (^BasicBlock)(void);
 
-
+/**************************************************************/
 #pragma mark- 以下待筛选
+/**************************************************************/
 
 #define NavigationBar_HEIGHT 44
 
@@ -95,11 +107,6 @@ typedef void (^BasicBlock)(void);
 #else
 // compiling without ARC
 #endif
-
-
-//G－C－D
-#define BACK(block) dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block)
-#define MAIN(block) dispatch_async(dispatch_get_main_queue(),block)
 
 
 #define USER_DEFAULT [NSUserDefaults standardUserDefaults]

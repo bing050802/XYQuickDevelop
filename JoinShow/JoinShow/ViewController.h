@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class TestView;
 @interface ViewController : UIViewController
 
+@property (nonatomic, retain) TestView *testView;
 @end

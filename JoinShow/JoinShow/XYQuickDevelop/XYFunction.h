@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <mach/mach.h>
 #import <mach/mach_host.h>
-#import <objc/runtime.h>
 
 #import "XYPrecompile.h"
 
@@ -28,30 +27,8 @@
 #endif
 @class ASIHTTPRequest;
 
-
-/****************************************************************/
-/** 移魂大法
- * api parameters 说明
- * c 类
- * original 原方法
- * replacement 劫持后的方法
- */
-static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
-    Method a = class_getInstanceMethod(c, original);
-    Method b = class_getInstanceMethod(c, replacement);
-    if (class_addMethod(c, original, method_getImplementation(b), method_getTypeEncoding(b)))
-    {
-        class_replaceMethod(c, replacement, method_getImplementation(a), method_getTypeEncoding(a));
-    }
-    else
-    {
-        method_exchangeImplementations(a, b);
-    }
-}
-
-/********************************           Common          *****************/
 @interface Common : NSObject{
- 
+    
 }
 /***************************************************************/
 #define kCommon_dataFilePath_documents 1
@@ -311,11 +288,9 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
  */
 +(BOOL) compareVersionFromOldVersion:(NSString *)oldVersion newVersion:(NSString *)newVersion;
 /****************************************************************/
-#pragma mark - to do
 /** objc to dictionary
  * api parameters 说明
  * aObject 对象
  */
 +(NSMutableDictionary *) dictionaryOfObject:(id)aObject;
-
 @end

@@ -1,31 +1,19 @@
 //
-//  FilePath.m
-//  ComicReader
+//  XYFunction.m
+//  TWP_SkyBookShelf
 //
-//  Created by Heaven on 12-1-26.
-//  Copyright (c) 2012年 Heaven. All rights reserved.
+//  Created by Heaven on 13-7-10.
+//
 //
 
-#import "Common.h"
+#import "XYCommon.h"
 #import <Social/Social.h>
 #import <objc/runtime.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <ifaddrs.h>
 #import <arpa/inet.h>
-
-// 第三方支持
-#ifdef USED_FMDatabase
-#import "FMDatabase.h"
-#endif
-
-#ifdef USED_MBProgressHUD
-#import "MBProgressHUD.h"
-#endif
-
-#ifdef USED_ASIHTTPRequest
-#import "ASIHTTPRequest.h"
-#endif
+#import "BlockUI.h"
 
 @implementation Common
 {
@@ -35,7 +23,7 @@
 + (NSString *)dataFilePath:(NSString *)file ofType:(int)kType{
     NSString *pathFile = nil;
     switch (kType) {
-        case kDocuments:
+        case kCommon_dataFilePath_documents:
         {
             // NSDocumentDirectory代表查找Documents路径,NSUserDomainMask代表在应用程序沙盒下找
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -44,14 +32,14 @@
             pathFile = [documentsDirectory stringByAppendingPathComponent:file];
             break;
         }
-        case kTmp:
+        case kCommon_dataFilePath_tmp:
         {
             NSString *str = NSTemporaryDirectory();
-        //    NSLog(@"%@", str);
+            //    NSLog(@"%@", str);
             pathFile = [str stringByAppendingPathComponent:file];
             break;
         }
-        case kAPP:
+        case kCommon_dataFilePath_app:
         {
             // 获得文件名
             NSString *str =[file stringByDeletingPathExtension];
@@ -69,16 +57,16 @@
 /***************************************************************/
 + (NSString *)replaceUnicode:(NSString *)unicodeStr
 {
-    NSString *tempStr1 = [unicodeStr stringByReplacingOccurrencesOfString:@"\\u" withString:@"\\U"]; 
-    NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""]; 
+    NSString *tempStr1 = [unicodeStr stringByReplacingOccurrencesOfString:@"\\u" withString:@"\\U"];
+    NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
     NSString *tempStr3 = [[@"\""stringByAppendingString:tempStr2] stringByAppendingString:@"\""];
-    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];   
+    NSData *tempData = [tempStr3 dataUsingEncoding:NSUTF8StringEncoding];
     NSString* returnStr = [NSPropertyListSerialization propertyListFromData:tempData
                                                            mutabilityOption:NSPropertyListImmutable
                                                                      format:NULL
-                                                           errorDescription:NULL]; 
-  //  NSLog(@"%@",returnStr);
-    return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n"withString:@"\n"]; 
+                                                           errorDescription:NULL];
+    //  NSLog(@"%@",returnStr);
+    return [returnStr stringByReplacingOccurrencesOfString:@"\\r\\n"withString:@"\n"];
 }
 
 /***************************************************************/
@@ -124,13 +112,13 @@
             rangeMarkB.length = str.length - rangeMarkA.location - rangeMarkA.length;
             rangeMarkB.location = rangeMarkA.location + rangeMarkA.length;
             break;
-       case kCommon_rangeOfString_back:
+        case kCommon_rangeOfString_back:
             rangeMarkB.length = rangeMark.location - rangeMarkA.location -rangeMarkA.length;
             rangeMarkB.location = rangeMarkA.location + rangeMarkA.length;
         default:
             break;
     }
-
+    
     rangeMarkB = [str rangeOfString:strEnd options:NSLiteralSearch range:rangeMarkB];
     if(rangeMarkB.length == 0) return rangeMarkB;
     NSRange rangeTmp;
@@ -142,14 +130,14 @@
 
 + (NSRange)rangeOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd operation:(int)operation;
 {
-   // NSString *strMark = nil;
-     NSRange rangeMark;
+    // NSString *strMark = nil;
+    NSRange rangeMark;
     return rangeMark;
 }
 + (NSMutableArray *)rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation{
     return [Common rangeArrayOfString:str pointStart:iStart start:strStart end:strEnd mark:strMark operation:operation everyStringExecuteBlock:nil];
 }
-+(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation everyStringExecuteBlock:(void(^)(NSString *strEvery))block{
++(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation everyStringExecuteBlock:(void(^)(NSRange rangeEvery))block{
     NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
     int i = 0;
     while (i != -1) {
@@ -157,8 +145,8 @@
         if(range.length == 0) break;
         [array addObject:[NSValue valueWithRange:range]];
         if (block) {
-            NSString *tmpStr = [str substringWithRange:range];
-            block(tmpStr);
+            // NSString *tmpStr = [str substringWithRange:range];
+            block(range);
         }
         i = range.location + range.length;
     }
@@ -171,7 +159,7 @@
     NSString *str2 = [NSString stringWithFormat:@"</%@>", akey];
     static int i = 0;
     if (kLastLocation == location) {
-     //   NSLogD(@"%s,%d", __FUNCTION__, str.length - akey.length*2);
+        //   NSLogD(@"%s,%d", __FUNCTION__, str.length - akey.length*2);
         if (i> (str.length - akey.length*2)) i = 0;
     }else i = location;
     
@@ -179,7 +167,7 @@
 #pragma mark- 待优化
     if (0 == range.length) {
         i = 0;
-        range = [Common rangeOfString:str pointStart:i start:str1 end:str2 mark:str1 operation:kCommon_rangeOfString_middle];   
+        range = [Common rangeOfString:str pointStart:i start:str1 end:str2 mark:str1 operation:kCommon_rangeOfString_middle];
     }
     
     if (0 == range.length) return nil;
@@ -191,7 +179,7 @@
     NSString *tmp = [str substringWithRange:range];
 #pragma mark - 如果没有 返回空格
     if (tmp == nil) tmp = @" ";
-
+    
     return tmp;
 }
 /***************************************************************/
@@ -238,7 +226,7 @@
                 NSRange resultRange = [match rangeAtIndex:0];
                 
                 //从str当中截取数据
-               // NSString *result=[str substringWithRange:resultRange];
+                // NSString *result=[str substringWithRange:resultRange];
                 [arrayA addObject:[NSValue valueWithRange:resultRange]];
                 //输出结果
                 //NSLogD(@"->%@<-",result);
@@ -286,33 +274,33 @@
 /***************************************************************/
 +(void)shareToTwitterWithStr:(NSString *)strText withPicPath:(NSString *)picPath withURL:(NSString*)strURL inController:(id)vc{
     /* 本项目屏蔽
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
-    {
-        SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [tweetSheet setInitialText:@"Tweeting from my own app! :)"];
-        if (picPath) [tweetSheet addImage:[UIImage imageWithContentsOfFile:picPath]];
-        if (strText) [tweetSheet setInitialText:strText];
-        if (strURL) [tweetSheet addURL:[NSURL URLWithString:strURL]];
-
-        if(vc==nil)
-        {
-            [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:tweetSheet animated:YES completion:nil];
-        }
-    }
-    else
-    {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"Sorry"
-                                  message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
-                                  delegate:self
-                                  cancelButtonTitle:@"OK"
-                                  otherButtonTitles:nil];
-        [alertView show];
-    }
-    */
+     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
+     {
+     SLComposeViewController *tweetSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+     [tweetSheet setInitialText:@"Tweeting from my own app! :)"];
+     if (picPath) [tweetSheet addImage:[UIImage imageWithContentsOfFile:picPath]];
+     if (strText) [tweetSheet setInitialText:strText];
+     if (strURL) [tweetSheet addURL:[NSURL URLWithString:strURL]];
+     
+     if(vc==nil)
+     {
+     [[UIApplication sharedApplication].delegate.window.rootViewController presentViewController:tweetSheet animated:YES completion:nil];
+     }
+     }
+     else
+     {
+     UIAlertView *alertView = [[UIAlertView alloc]
+     initWithTitle:@"Sorry"
+     message:@"You can't send a tweet right now, make sure your device has an internet connection and you have at least one Twitter account setup"
+     delegate:self
+     cancelButtonTitle:@"OK"
+     otherButtonTitles:nil];
+     [alertView show];
+     }
+     */
 }
 /***************************************************************/
-+(void)showAlertViewTitle:(NSString *)aTitle message:(NSString *)msg cancelButtonTitle:(NSString *)str{
++(void) showAlertViewTitle:(NSString *)aTitle message:(NSString *)msg cancelButtonTitle:(NSString *)str{
     UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:aTitle message:msg delegate:nil cancelButtonTitle:str otherButtonTitles:nil, nil];
     [alertview show];
     [alertview release];
@@ -327,8 +315,8 @@
         const char *name = property_getName(properties[i]);
         NSString *propertyName = [NSString stringWithCString:name encoding:NSUTF8StringEncoding];
         
-     //   const char *attr = property_getAttributes(properties[i]);
-       // NSLogD(@"%s\n%@, %s", __FUNCTION__, propertyName, attr);
+        //   const char *attr = property_getAttributes(properties[i]);
+        // NSLogD(@"%s\n%@, %s", __FUNCTION__, propertyName, attr);
         [array addObject:propertyName];
     }
     free( properties );
@@ -336,15 +324,15 @@
 }
 /***************************************************************/
 +(void)activityShow:(BOOL)b{
- //   static UIView *bgView;
+    //   static UIView *bgView;
     static UIActivityIndicatorView *aView = nil;
     if (aView == nil) {
         /*
-        bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 1024)];
-        bgView.backgroundColor = [UIColor blackColor];
-        bgView.alpha = 0.7;
+         bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 1024)];
+         bgView.backgroundColor = [UIColor blackColor];
+         bgView.alpha = 0.7;
          */
-        aView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        aView = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] autorelease];
     }
     if (b) {
         UIViewController *vc = [Common getCurrentViewController];
@@ -353,28 +341,30 @@
         [aView startAnimating];
     }else{
         [aView stopAnimating];
+        [aView removeFromSuperview];
+        aView = nil;
     }
-   
+    
 }
 /***************************************************************/
 /*
-+(void)playSoundWihtPath:(NSString *)audioPath
-{
-    if (audioPath) {
-        NSURL *soundUrl = [[NSURL alloc] initFileURLWithPath:audioPath];
-        NSError *error = [[NSError alloc] init];
-        AVAudioPlayer *audio = [[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error] autorelease];
-       // NSLogD(@"%s, %@", __FUNCTION__, error);
-        [error release];
-        // [data release];
-        [soundUrl release];
-        audio.numberOfLoops = 0;
-        // audio.delegate = self;
-        // [audio setVolume:1];
-        [audio prepareToPlay];
-        [audio play];
-    }
-}
+ +(void)playSoundWihtPath:(NSString *)audioPath
+ {
+ if (audioPath) {
+ NSURL *soundUrl = [[NSURL alloc] initFileURLWithPath:audioPath];
+ NSError *error = [[NSError alloc] init];
+ AVAudioPlayer *audio = [[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error] autorelease];
+ // NSLogD(@"%s, %@", __FUNCTION__, error);
+ [error release];
+ // [data release];
+ [soundUrl release];
+ audio.numberOfLoops = 0;
+ // audio.delegate = self;
+ // [audio setVolume:1];
+ [audio prepareToPlay];
+ [audio play];
+ }
+ }
  */
 /***************************************************************/
 +(NSString *)sha1:(NSString*)str{
@@ -400,10 +390,10 @@
     }
     [[UIApplication sharedApplication ] openURL:tmpURL];
 }
-#ifdef USED_FMDatabase
+#if defined (__USED_FMDatabase____) && __USED_FMDatabase__
 /***************************************************************/
 + (BOOL)updateTable:(NSString *)tableName dbPath:(NSString *)dbPath object:(id)aObject{
-   // NSString *path = [Common dataFilePath:@"/BeeDatabase/TWP_SkyBookShelf.db" ofType:kDocuments];
+    // NSString *path = [Common dataFilePath:@"/BeeDatabase/TWP_SkyBookShelf.db" ofType:kCommon_dataFilePath_documents];
     FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
     [db open];
     
@@ -459,34 +449,34 @@
 /***************************************************************/
 + (UIViewController *)getCurrentViewController {
     UIViewController *result;
-		// Try to find the root view controller programmically
-		// Find the top window (that is not an alert view or other window)
-		UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
-		if (topWindow.windowLevel != UIWindowLevelNormal)
-		{
-			NSArray *windows = [[UIApplication sharedApplication] windows];
-			for(topWindow in windows)
-			{
-				if (topWindow.windowLevel == UIWindowLevelNormal)
-					break;
-			}
-		}
-        
-		UIView *rootView = [[topWindow subviews] objectAtIndex:0];
-		id nextResponder = [rootView nextResponder];
-        
-		if ([nextResponder isKindOfClass:[UIViewController class]])
-			result = nextResponder;
-		else if ([topWindow respondsToSelector:@selector(rootViewController)] && topWindow.rootViewController != nil)
-            result = topWindow.rootViewController;
-		else
-			NSAssert(NO, @"Could not find a root view controller.");
-
-    return result;    
+    // Try to find the root view controller programmically
+    // Find the top window (that is not an alert view or other window)
+    UIWindow *topWindow = [[UIApplication sharedApplication] keyWindow];
+    if (topWindow.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(topWindow in windows)
+        {
+            if (topWindow.windowLevel == UIWindowLevelNormal)
+                break;
+        }
+    }
+    
+    UIView *rootView = [[topWindow subviews] objectAtIndex:0];
+    id nextResponder = [rootView nextResponder];
+    
+    if ([nextResponder isKindOfClass:[UIViewController class]])
+        result = nextResponder;
+    else if ([topWindow respondsToSelector:@selector(rootViewController)] && topWindow.rootViewController != nil)
+        result = topWindow.rootViewController;
+    else
+        NSAssert(NO, @"Could not find a root view controller.");
+    
+    return result;
 }
-#ifdef USED_MBProgressHUD
+#if defined (__USED_MBProgressHUD__) && __USED_MBProgressHUD__
 /***************************************************************/
-+(void)showMBProgressHUDTitle:(NSString *)aTitle msg:(NSString *)aMsg image:(UIImage *)aImg delay:(float)d{
++(void)showMBProgressHUDTitle:(NSString *)aTitle msg:(NSString *)aMsg image:(UIImage *)aImg dimBG:(BOOL)dimBG delay:(float)d{
     UIViewController *vc = [self getCurrentViewController];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:vc.view animated:YES];
     
@@ -504,8 +494,23 @@
     hud.labelText = aTitle;
     hud.detailsLabelText = aMsg;
     hud.removeFromSuperViewOnHide = YES;
+    hud.dimBackground = dimBG;
     [hud show:YES];
     [hud hide:YES afterDelay:d];
+}
++(void) showMBProgressHUDTitle:(NSString *)aTitle msg:(NSString *)aMsg dimBG:(BOOL)dimBG executeBlock:(void(^)(MBProgressHUD *hud))blockE finishBlock:(void(^)(void))blockF{
+    UIViewController *vc = [self getCurrentViewController];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:vc.view animated:YES];
+    hud.labelText = aTitle;
+    hud.detailsLabelText = aMsg;
+    hud.removeFromSuperViewOnHide = YES;
+    hud.dimBackground = dimBG;
+    [hud showAnimated:YES whileExecutingBlock:^{
+		blockE(hud);
+	} completionBlock:^{
+		//[hud hide:YES];
+        blockF();
+	}];
 }
 #endif
 /***************************************************************/
@@ -559,26 +564,184 @@
     freeifaddrs(interfaces);
     return address;
 }
+#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
 /***************************************************************/
-+ (ASIHTTPRequest *)startAsynchronousRequestWithUrl:(NSString *)url
-                                             succeed:(void (^)(ASIHTTPRequest *request))blockS
-                                              failed:(void (^)(void))blockF{
-    NSURL *link = [NSURL URLWithString:url];
++(ASIHTTPRequest *) startAsynchronousRequestWithURLString:(NSString *)str
+                                                  succeed:(void (^)(ASIHTTPRequest *request))blockS
+                                                   failed:(void (^)(NSError *error))blockF{
+    NSURL *link = [NSURL URLWithString:str];
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:link];
     request.timeOutSeconds = 10;
     [request setCompletionBlock:^{
-        // Use when fetching text data
         if (blockS) {
             blockS(request);
         }
     }];
     [request setFailedBlock:^{
+        NSError *error = [request error];
         if (blockF) {
-            blockF();
+            blockF(error);
         }
     }];
     [request startAsynchronous];
     
     return request;
 }
+#endif
+/***************************************************************/
++(void) printUsedAndFreeMemoryWithMark:(NSString *)mark{
+    mach_port_t host_port;
+    mach_msg_type_number_t host_size;
+    vm_size_t pagesize;
+    
+    host_port = mach_host_self();
+    host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
+    host_page_size(host_port, &pagesize);
+    
+    vm_statistics_data_t vm_stat;
+    
+    if (host_statistics(host_port, HOST_VM_INFO, (host_info_t)&vm_stat, &host_size) != KERN_SUCCESS)
+        NSLog(@"mark: %@\nFailed to fetch vm statistics", mark);
+    
+    /* Stats in bytes */
+    natural_t mem_used = (vm_stat.active_count +
+                          vm_stat.inactive_count +
+                          vm_stat.wire_count) * pagesize;
+    natural_t mem_free = vm_stat.free_count * pagesize;
+    natural_t mem_total = mem_used + mem_free;
+    int iUsed = round(mem_used/100000);
+    int iFree = round(mem_free/100000);
+    int iTotal = round(mem_total/100000);
+    NSLog(@"mark: %@\nused: %d free: %d total: %d", mark, iUsed, iFree, iTotal);
+}
+
+/***************************************************************/
+/*
+ +(void) showBackgroundView{
+ [Common setBackgroundViewHidden:NO];
+ }
+ +(void) removeBackgroundView{
+ [Common setBackgroundViewHidden:YES];
+ }
+ +(void) setBackgroundViewHidden:(BOOL)b{
+ static UIControl *tmpView2 = nil;
+ if (b) {
+ if (tmpView2) {
+ [tmpView2 removeFromSuperview];
+ tmpView2 = nil;
+ }
+ 
+ }else{
+ UIView *tmpView = [Common getCurrentViewController].view;
+ CGRect rect;
+ if (UIInterfaceOrientationIsPortrait([UIApplication sharedApplication].statusBarOrientation)) {
+ // 竖屏
+ rect = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+ }else{
+ // 横屏
+ rect = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width);
+ }
+ if (tmpView2) {
+ tmpView2.frame = rect;
+ }else{
+ tmpView2 = [[UIControl alloc] initWithFrame:rect];
+ tmpView2.backgroundColor = RGBACOLOR(0, 0, 0, 0.8);
+ tmpView2.userInteractionEnabled = YES;
+ [tmpView2 addTarget:self action:@selector(removeBackgroundView) forControlEvents:UIControlEventTouchUpInside];
+ }
+ [tmpView addSubview:tmpView2];
+ [tmpView2 release];
+ }
+ }
+ */
+
+/***************************************************************/
+#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
++(void) checkUpdateInAppStore:(NSString *)appID curVersion:(NSString *)aVersion appURLString:(NSString *)strURL
+                         same:(void(^)(void))blockSame
+                    stayStill:(void(^)(void))blockstayStill{
+    [self checkUpdateInAppStore:appID curVersion:aVersion
+                           same:blockSame localIsOld:^(NSString *appStoreVersion) {
+                               NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+                               NSString *appName = [infoDict objectForKey:@"CFBundleDisplayName"];
+                               NSString *msg = [NSString stringWithFormat:@"There is a new update available for the %@ (v%@),  would you like to download from the App Store now ?", appName, appStoreVersion];
+                               
+                               UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Message"
+                                                                               message:msg
+                                                                              delegate:nil
+                                                                     cancelButtonTitle:@"Cancel"
+                                                                     otherButtonTitles:@"Update",nil];
+                               [alert showWithCompletionHandler:^(NSInteger buttonIndex) {
+                                   if (buttonIndex == 0) {
+                                       if (blockstayStill) {
+                                           blockstayStill();
+                                       }
+                                   }else if (buttonIndex == 1){
+                                       [self openURL:[NSURL URLWithString:strURL]];
+                                   }
+                               }];
+                           }];
+}
++(void) checkUpdateInAppStore:(NSString *)appID curVersion:(NSString *)aVersion
+                         same:(void(^)(void))blockSame
+                   localIsOld:(void(^)(NSString *appStoreVersion))blocklocalIsOld{
+    NSURL *appleLink = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", appID]];
+    __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:appleLink];
+    [request addRequestHeader:@"Content-Type" value:@"application/json"];
+    request.timeOutSeconds = 10;
+    [request setCompletionBlock:^{
+        NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+        NSString *str = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
+        
+        NSRange range = [self rangeOfString:str pointStart:0 start:@":\"" end:@"\"," mark:@"\"version\"" operation:kCommon_rangeOfString_front];
+        NSString *versionAppStore = [str substringWithRange:NSMakeRange(range.location + 2, range.length -4)];
+        NSString *localVersion;
+        if (aVersion == nil) {
+            localVersion = [infoDict objectForKey:@"CFBundleVersion"];
+        }else{
+            localVersion = aVersion;
+        }
+        
+        BOOL b = [self compareVersionFromOldVersion:localVersion newVersion:versionAppStore];
+        
+        if (b) {
+            if (blocklocalIsOld) {
+                blocklocalIsOld(versionAppStore);
+            }
+        }else{
+            if (blockSame) {
+                blockSame();
+            }
+        }
+        
+    }];
+    [request setFailedBlock:^{
+        if (blockSame) {
+            blockSame();
+        }
+    }];
+    [request startAsynchronous];
+}
+#endif
+/***************************************************************/
++(BOOL) compareVersionFromOldVersion:(NSString *)oldVersion newVersion:(NSString *)newVersion{
+    NSArray*oldV = [oldVersion componentsSeparatedByString:@"."];
+    NSArray*newV = [newVersion componentsSeparatedByString:@"."];
+    
+    if (oldV.count == newV.count) {
+        for (NSInteger i = 0; i < oldV.count; i++) {
+            NSInteger old = [(NSString *)[oldV objectAtIndex:i] integerValue];
+            NSInteger new = [(NSString *)[newV objectAtIndex:i] integerValue];
+            if (old < new) {
+                return YES;
+            }
+        }
+        return NO;
+    } else {
+        return NO;
+    }
+}
+/***************************************************************/
+
 @end
+

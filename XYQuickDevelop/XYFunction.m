@@ -8,7 +8,6 @@
 
 #import "XYCommon.h"
 #import <Social/Social.h>
-#import <objc/runtime.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <ifaddrs.h>
@@ -741,7 +740,6 @@
         return NO;
     }
 }
-/***************************************************************/
 
 @end
 

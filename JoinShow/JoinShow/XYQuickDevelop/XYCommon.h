@@ -6,6 +6,8 @@
 //  Copyright (c) 2012年 Heaven. All rights reserved.
 //
 
+//#import "XYCommon.h"
+
 #import "XYPrecompile.h"
 #import "XYFunction.h"
 #import "XYThread.h"
