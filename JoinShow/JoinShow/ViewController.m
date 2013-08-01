@@ -25,6 +25,7 @@
     [tmpView addTapGestureWithBlock:^{
         NSLogD(@"%s", __FUNCTION__);
     }];
+
     _testView = tmpView;
     [self.view addSubview:tmpView];
     [tmpView release];
@@ -34,9 +35,45 @@
     btn.backgroundColor = [UIColor yellowColor];
     [btn setTitle:@"remove" forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-    //显示控件
     [self.view addSubview:btn];
+    
+    UILabel *tmpLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 50)];
+    tmpLab.backgroundColor = [UIColor lightGrayColor];
+    tmpLab.text = @"test";
+    labText = tmpLab;
+    [self.view addSubview:tmpLab];
+    [tmpLab release];
+    
+    /*
 
+    */
+    [_testView performSelector:@selector(changeLabText)
+                        target:self mark:@"1"
+                    afterDelay:^NSTimeInterval{
+                        return 1;
+                    }
+                          loop:YES
+                      isRunNow:NO];
+    
+    [_testView performBlock:^{
+        static int i = 0;
+        i = i + 2;
+        labText.text = [NSString stringWithFormat:@"%i", i];
+        
+    }
+                       mark:@"1"
+                 afterDelay:^NSTimeInterval{
+                     return 1;
+                 }
+                       loop:YES
+                   isRunNow:NO];
+}
+
+-(void)changeLabText{
+    static int i = 0;
+    i++;
+    labText.text = [NSString stringWithFormat:@"%i", i];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,6 +83,7 @@
 }
 
 -(void)btnClick{
+    [_testView removePerformRandomDelay];
     [_testView removeFromSuperview];
 }
 @end

@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 @class TestView;
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    UILabel *labText;
+}
 
 @property (nonatomic, retain) TestView *testView;
 @end

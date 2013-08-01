@@ -121,15 +121,15 @@ static int const kOpenUDIDRedundancySlots = 100;
     // March 25th 2012: this day has come, let's remove this "outlawed" call...
     // August 2012: well, perhaps much ado about nothing; in any case WWDC2012 gave us something to work with; read below
 #if TARGET_OS_IPHONE	
-//    if([UIDevice instancesRespondToSelector:@selector(uniqueId___entifier)]){
-//        _openUDID = [[UIDevice currentDevice] uniqueId___entifier];
+//    if([UIDevice instancesRespondToSelector:@selector(uniqueIdentifier)]){
+//        _openUDID = [[UIDevice currentDevice] uniqueIdentifier];
 //    }
 #endif
     
     //
     // !!!!! IMPORTANT README !!!!!
     //
-    // August 2012: iOS 6 introduces new APIs that help us deal with the now deprecated [UIDevice uniqueId___entifier]
+    // August 2012: iOS 6 introduces new APIs that help us deal with the now deprecated [UIDevice uniqueIdentifier]
     // Since iOS 6 is still pre-release and under NDA, the following piece of code is meant to produce an error at
     // compile time. Accredited developers integrating OpenUDID are expected to review the iOS 6 release notes and
     // documentation, and replace the underscore ______ in the last part of the selector below with the right

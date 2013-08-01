@@ -7,19 +7,17 @@
 //
 
 #import "UIView+XY.h"
-#import "XYFunction.h"
+#import "XYExtension.h"
 #import <objc/runtime.h>
 
 @implementation UIView (XY)
 
-#undef	UIView_KEY_TapBlock
-#define UIView_KEY_TapBlock	"TapBlock"
+#undef	UIView_key_tapBlock
+#define UIView_key_tapBlock	"TapBlock"
 
 
 -(void) UIView_dealloc{
-	// 移除所有关联对象。
     objc_removeAssociatedObjects(self);
-    // 调用dealloc方法。
     XY_swizzleInstanceMethod([self class], @selector(UIView_dealloc), @selector(dealloc));
 	[self dealloc];
 }
@@ -53,11 +51,11 @@
     [self addGestureRecognizer:tap];
     [tap release];
     
-    objc_setAssociatedObject(self, UIView_KEY_TapBlock, aBlock, OBJC_ASSOCIATION_COPY);
+    objc_setAssociatedObject(self, UIView_key_tapBlock, aBlock, OBJC_ASSOCIATION_COPY);
     [self replaceMethod_dealloc];
 }
 -(void)actionTap{
-    void (^aBlock)(void) = objc_getAssociatedObject(self, UIView_KEY_TapBlock);
+    void (^aBlock)(void) = objc_getAssociatedObject(self, UIView_key_tapBlock);
     
     if (aBlock) aBlock();
 }
