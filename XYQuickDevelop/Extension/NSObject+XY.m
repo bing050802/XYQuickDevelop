@@ -36,12 +36,13 @@
 }
 
 -(void) performSelector:(SEL)aSelector  target:(id)target  mark:(id)mark afterDelay:(NSTimeInterval(^)(void))aBlockTime loop:(BOOL)loop isRunNow:(BOOL)now{
+    if (aBlockTime) return;
+    
     NSTimeInterval t;
-    if (aBlockTime) {
-        t = aBlockTime();
-    }
     if (now) {
         t = 0;
+    }else{
+        t = aBlockTime();
     }
     
     objc_setAssociatedObject(self, NSObject_key_performBlock, nil, OBJC_ASSOCIATION_ASSIGN);

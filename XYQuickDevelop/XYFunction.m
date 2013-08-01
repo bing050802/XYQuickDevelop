@@ -346,26 +346,6 @@
     
 }
 /***************************************************************/
-/*
- +(void)playSoundWihtPath:(NSString *)audioPath
- {
- if (audioPath) {
- NSURL *soundUrl = [[NSURL alloc] initFileURLWithPath:audioPath];
- NSError *error = [[NSError alloc] init];
- AVAudioPlayer *audio = [[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error] autorelease];
- // NSLogD(@"%s, %@", __FUNCTION__, error);
- [error release];
- // [data release];
- [soundUrl release];
- audio.numberOfLoops = 0;
- // audio.delegate = self;
- // [audio setVolume:1];
- [audio prepareToPlay];
- [audio play];
- }
- }
- */
-/***************************************************************/
 +(NSString *)sha1:(NSString*)str{
     const char *cstr = [str cStringUsingEncoding:NSUTF8StringEncoding];
     NSData *data = [NSData dataWithBytes:cstr length:str.length];
@@ -389,8 +369,9 @@
     }
     [[UIApplication sharedApplication ] openURL:tmpURL];
 }
-#if defined (__USED_FMDatabase____) && __USED_FMDatabase__
+
 /***************************************************************/
+#if (1 == __USED_FMDatabase__)
 + (BOOL)updateTable:(NSString *)tableName dbPath:(NSString *)dbPath object:(id)aObject{
     // NSString *path = [Common dataFilePath:@"/BeeDatabase/TWP_SkyBookShelf.db" ofType:kCommon_dataFilePath_documents];
     FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
@@ -473,8 +454,9 @@
     
     return result;
 }
-#if defined (__USED_MBProgressHUD__) && __USED_MBProgressHUD__
+
 /***************************************************************/
+#if (1 == __USED_MBProgressHUD__)
 +(void)showMBProgressHUDTitle:(NSString *)aTitle msg:(NSString *)aMsg image:(UIImage *)aImg dimBG:(BOOL)dimBG delay:(float)d{
     UIViewController *vc = [self getCurrentViewController];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:vc.view animated:YES];
@@ -563,8 +545,9 @@
     freeifaddrs(interfaces);
     return address;
 }
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
+
 /***************************************************************/
+#if (1 ==  __USED_ASIHTTPRequest__)
 +(ASIHTTPRequest *) startAsynchronousRequestWithURLString:(NSString *)str
                                                   succeed:(void (^)(ASIHTTPRequest *request))blockS
                                                    failed:(void (^)(NSError *error))blockF{
@@ -655,7 +638,7 @@
  */
 
 /***************************************************************/
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
+#if (1 ==  __USED_ASIHTTPRequest__)
 +(void) checkUpdateInAppStore:(NSString *)appID curVersion:(NSString *)aVersion appURLString:(NSString *)strURL
                          same:(void(^)(void))blockSame
                     stayStill:(void(^)(void))blockstayStill{

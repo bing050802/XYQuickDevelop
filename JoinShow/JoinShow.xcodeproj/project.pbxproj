@@ -56,6 +56,13 @@
 		57B3FFFA177AD9BC00775FC9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57B3FFF9177AD9BC00775FC9 /* AppDelegate.m */; };
 		57B3FFFC177AD9BC00775FC9 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 57B3FFFB177AD9BC00775FC9 /* Default.png */; };
 		57B3FFFE177AD9BC00775FC9 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 57B3FFFD177AD9BC00775FC9 /* Default@2x.png */; };
+		57BE89B117AA4E3900FCD864 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57BE89A917AA4E3900FCD864 /* CDAudioManager.m */; };
+		57BE89B217AA4E3900FCD864 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 57BE89AC17AA4E3900FCD864 /* CDOpenALSupport.m */; };
+		57BE89B317AA4E3900FCD864 /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = 57BE89AE17AA4E3900FCD864 /* CocosDenshion.m */; };
+		57BE89B417AA4E3900FCD864 /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 57BE89B017AA4E3900FCD864 /* SimpleAudioEngine.m */; };
+		57BE89B917AA525200FCD864 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BE89B817AA525200FCD864 /* AVFoundation.framework */; };
+		57BE89BB17AA52E700FCD864 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BE89BA17AA52E700FCD864 /* AudioToolbox.framework */; };
+		57BE89BD17AA531200FCD864 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57BE89BC17AA531100FCD864 /* OpenAL.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +141,19 @@
 		57BE88A317AA2E9400FCD864 /* XYQuickDevelop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XYQuickDevelop-Prefix.pch"; sourceTree = "<group>"; };
 		57BE88A417AA2E9400FCD864 /* XYQuickDevelop.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYQuickDevelop.h; sourceTree = "<group>"; };
 		57BE88A617AA2E9400FCD864 /* XYQuickDevelop.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYQuickDevelop.m; sourceTree = "<group>"; };
+		57BE89A817AA4E3900FCD864 /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
+		57BE89A917AA4E3900FCD864 /* CDAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAudioManager.m; sourceTree = "<group>"; };
+		57BE89AA17AA4E3900FCD864 /* CDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDConfig.h; sourceTree = "<group>"; };
+		57BE89AB17AA4E3900FCD864 /* CDOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDOpenALSupport.h; sourceTree = "<group>"; };
+		57BE89AC17AA4E3900FCD864 /* CDOpenALSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDOpenALSupport.m; sourceTree = "<group>"; };
+		57BE89AD17AA4E3900FCD864 /* CocosDenshion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosDenshion.h; sourceTree = "<group>"; };
+		57BE89AE17AA4E3900FCD864 /* CocosDenshion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosDenshion.m; sourceTree = "<group>"; };
+		57BE89AF17AA4E3900FCD864 /* SimpleAudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAudioEngine.h; sourceTree = "<group>"; };
+		57BE89B017AA4E3900FCD864 /* SimpleAudioEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAudioEngine.m; sourceTree = "<group>"; };
+		57BE89B517AA4EE300FCD864 /* XYExternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYExternal.h; sourceTree = "<group>"; };
+		57BE89B817AA525200FCD864 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		57BE89BA17AA52E700FCD864 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		57BE89BC17AA531100FCD864 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +171,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57BE89BD17AA531200FCD864 /* OpenAL.framework in Frameworks */,
+				57BE89BB17AA52E700FCD864 /* AudioToolbox.framework in Frameworks */,
+				57BE89B917AA525200FCD864 /* AVFoundation.framework in Frameworks */,
 				579ECE1D17A8E90B00687AF2 /* CoreText.framework in Frameworks */,
 				57B3FFEA177AD9BC00775FC9 /* UIKit.framework in Frameworks */,
 				57B3FFEC177AD9BC00775FC9 /* Foundation.framework in Frameworks */,
@@ -193,6 +216,7 @@
 		579ECDD917A8E85400687AF2 /* External */ = {
 			isa = PBXGroup;
 			children = (
+				57BE89B517AA4EE300FCD864 /* XYExternal.h */,
 				579ECDDA17A8E85400687AF2 /* UI */,
 				579ECDE717A8E85400687AF2 /* Utilities */,
 			);
@@ -242,6 +266,7 @@
 		579ECDE717A8E85400687AF2 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				57BE89A717AA4E3900FCD864 /* CocosDenshion */,
 				579ECDE817A8E85400687AF2 /* OpenUDID */,
 				579ECDEB17A8E85400687AF2 /* SDWebData_1.1.1 */,
 			);
@@ -318,6 +343,9 @@
 		57B3FFE8177AD9BC00775FC9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57BE89BC17AA531100FCD864 /* OpenAL.framework */,
+				57BE89BA17AA52E700FCD864 /* AudioToolbox.framework */,
+				57BE89B817AA525200FCD864 /* AVFoundation.framework */,
 				579ECE1C17A8E90B00687AF2 /* CoreText.framework */,
 				57B3FFE9177AD9BC00775FC9 /* UIKit.framework */,
 				57B3FFEB177AD9BC00775FC9 /* Foundation.framework */,
@@ -391,6 +419,22 @@
 				57BE88A317AA2E9400FCD864 /* XYQuickDevelop-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		57BE89A717AA4E3900FCD864 /* CocosDenshion */ = {
+			isa = PBXGroup;
+			children = (
+				57BE89A817AA4E3900FCD864 /* CDAudioManager.h */,
+				57BE89A917AA4E3900FCD864 /* CDAudioManager.m */,
+				57BE89AA17AA4E3900FCD864 /* CDConfig.h */,
+				57BE89AB17AA4E3900FCD864 /* CDOpenALSupport.h */,
+				57BE89AC17AA4E3900FCD864 /* CDOpenALSupport.m */,
+				57BE89AD17AA4E3900FCD864 /* CocosDenshion.h */,
+				57BE89AE17AA4E3900FCD864 /* CocosDenshion.m */,
+				57BE89AF17AA4E3900FCD864 /* SimpleAudioEngine.h */,
+				57BE89B017AA4E3900FCD864 /* SimpleAudioEngine.m */,
+			);
+			path = CocosDenshion;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -546,6 +590,10 @@
 				579ECE2017A8EF8A00687AF2 /* TestView.m in Sources */,
 				579ECE2417A911B000687AF2 /* Test2View.m in Sources */,
 				579ECE2B17A9236600687AF2 /* NSObject+XY.m in Sources */,
+				57BE89B117AA4E3900FCD864 /* CDAudioManager.m in Sources */,
+				57BE89B217AA4E3900FCD864 /* CDOpenALSupport.m in Sources */,
+				57BE89B317AA4E3900FCD864 /* CocosDenshion.m in Sources */,
+				57BE89B417AA4E3900FCD864 /* SimpleAudioEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

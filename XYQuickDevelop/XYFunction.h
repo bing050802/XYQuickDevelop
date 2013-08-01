@@ -6,27 +6,9 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import <mach/mach.h>
-#import <mach/mach_host.h>
-#import <objc/runtime.h>
-
 #import "XYPrecompile.h"
 
-// 第三方支持
-#if defined (__USED_FMDatabase____) && __USED_FMDatabase__
-#import "FMDatabase.h"
-#endif
-
-#if defined (__USED_MBProgressHUD__) && __USED_MBProgressHUD__
-#import "MBProgressHUD.h"
-#endif
 @class MBProgressHUD;
-
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
-#import "ASIHTTPRequest.h"
-#endif
 @class ASIHTTPRequest;
 
 
@@ -193,7 +175,7 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
 +(void) openURL:(NSURL *)url;
 
 /****************************************************************/
-#if defined (__USED_FMDatabase____) && __USED_FMDatabase__
+#if (1 == __USED_FMDatabase__)
 /** 更新表结构
  * api parameters 说明
  * tableName 表明, dbPath 数据库路径, aObject 实体对象
@@ -208,7 +190,7 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
 + (UIViewController *) getCurrentViewController;
 
 /****************************************************************/
-#if defined (__USED_MBProgressHUD__) && __USED_MBProgressHUD__
+#if (1 == __USED_MBProgressHUD__)
 /** 显示MBProgressHUD指示器
  * api parameters 说明
  * aTitle 标题
@@ -257,7 +239,7 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
  */
 +(NSString *) getLocalHost;
 /****************************************************************/
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
+#if (1 ==  __USED_ASIHTTPRequest__)
 /** 开启一个异步请求
  * api parameters 说明
  * url
@@ -285,7 +267,7 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
  */
 //+(UIView *) setBackgroundViewHidden:(BOOL)b;
 /****************************************************************/
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
+#if (1 ==  __USED_ASIHTTPRequest__)
 /** 检查软件更新
  * api parameters 说明
  * appID 应用程序ID
