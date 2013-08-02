@@ -54,19 +54,22 @@
                     }
                           loop:YES
                       isRunNow:NO];
+
+    NSString *strTest = @"test1";
+    strTest = @"test2";
+    NSLog(@"%s, %@", __FUNCTION__, strTest);
     
-    [_testView performBlock:^{
-        static int i = 0;
-        i = i + 2;
-        labText.text = [NSString stringWithFormat:@"%i", i];
-        
-    }
-                       mark:@"1"
-                 afterDelay:^NSTimeInterval{
-                     return 1;
-                 }
-                       loop:YES
-                   isRunNow:NO];
+    ////////////////////////////  XYSpriteView ////////////////////////////
+    XYSpriteView *tmpSprite = [[XYSpriteView alloc] initWithFrame:CGRectMake(300, 0, 600, 768)];
+    [tmpSprite formatImg:@"p3_b_%d" count:24 repeatCount:0];
+    [tmpSprite showImgWithIndex:4];
+    tmpSprite.delegate = self;
+    [[XYSpriteManager sharedInstance].sprites setObject:tmpSprite forKey:@"a"];
+    [self.view addSubview:tmpSprite];
+    [tmpSprite release];
+    
+    [[XYSpriteManager sharedInstance] startTimer];
+    [[XYSpriteManager sharedInstance] startAllSprites];
 }
 
 -(void)changeLabText{
@@ -85,5 +88,8 @@
 -(void)btnClick{
     [_testView removePerformRandomDelay];
     [_testView removeFromSuperview];
+}
+#pragma mark -XYSpriteDelegate
+-(void) spriteOnIndex:(int)aIndex  sprite:(XYSpriteView *)aSprite{
 }
 @end

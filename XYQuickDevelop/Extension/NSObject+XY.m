@@ -24,7 +24,7 @@
 
 
 @implementation NSObject (XY)
-
+/*
 -(void) NSObject_dealloc{
     objc_removeAssociatedObjects(self);
     XY_swizzleInstanceMethod([self class], @selector(NSObject_dealloc), @selector(dealloc));
@@ -34,9 +34,9 @@
 -(void) replaceMethod_dealloc{
     XY_swizzleInstanceMethod([self class], @selector(dealloc), @selector(NSObject_dealloc));
 }
-
+*/
 -(void) performSelector:(SEL)aSelector  target:(id)target  mark:(id)mark afterDelay:(NSTimeInterval(^)(void))aBlockTime loop:(BOOL)loop isRunNow:(BOOL)now{
-    if (aBlockTime) return;
+    if (!aBlockTime) return;
     
     NSTimeInterval t;
     if (now) {
@@ -54,6 +54,8 @@
     [self performSelector:@selector(randomRerform:) withObject:mark afterDelay:t];
 }
 -(void) performBlock:(void(^)(void))aBlock mark:(id)mark afterDelay:(NSTimeInterval(^)(void))aBlockTime loop:(BOOL)loop isRunNow:(BOOL)now{
+    if (!aBlockTime) return;
+    
     NSTimeInterval t;
     if (aBlockTime) {
         t = aBlockTime();

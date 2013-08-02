@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XYCommon.h"
 @class TestView;
-@interface ViewController : UIViewController{
+@interface ViewController : UIViewController<XYSpriteDelegate>{
     UILabel *labText;
 }
 

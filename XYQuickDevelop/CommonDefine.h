@@ -13,6 +13,7 @@
 #undef	XYLogDebug
 #undef	XYLogError
 #undef	XYLogException
+
 #ifdef DEBUG
 #define NSLogD(format, ...) NSLog(format, ## __VA_ARGS__)
 #define XYLogDebug(fmt,...) NSLog( @"debug:%s.%d "fmt, __FUNCTION__, __LINE__, ##__VA_ARGS__)
@@ -20,12 +21,11 @@
 #define XYLogError(fmt,...) NSLog( @"error:%s.%d "fmt, __FUNCTION__, __LINE__, ##__VA_ARGS__)
 //Log异常信息
 #define XYLogException(fmt,...) NSLog( @"warn:%s.%d "fmt, __FUNCTION__, __LINE__, ##__VA_ARGS__)
+
 #else
 #define NSLogD(format, ...)
 #define XYLogDebug(fmt,...)
-//Log错误信息
 #define XYLogError(fmt,...) NSLog( @"error:%s.%d "fmt, __FUNCTION__, __LINE__, ##__VA_ARGS__)
-//Log异常信息
 #define XYLogException(fmt,...) NSLog( @"warn:%s.%d "fmt, __FUNCTION__, __LINE__, ##__VA_ARGS__)
 #endif
 
@@ -62,6 +62,20 @@ return __singleton__; \
 // block
 #pragma mark 待完善
 typedef void (^BasicBlock)(void);
+
+
+/**************************************************************/
+// delegate
+#define DelegateSelf( __x ) \
+if (_delegate && [_delegate respondsToSelector:@selector(__x)]) { \
+    [_delegate __x self];} 
+
+#define Delegate( __x ) \
+if (_delegate && [_delegate respondsToSelector:@selector(__x)]) { \
+[_delegate __x];} 
+
+
+
 
 /**************************************************************/
 #pragma mark- 以下待筛选
