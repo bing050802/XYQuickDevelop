@@ -9,10 +9,12 @@
 #ifndef TWP_SkyBookShelf_XYPrecompile_h
 #define TWP_SkyBookShelf_XYPrecompile_h
 
-#define __USED_FMDatabase__ (0)
-#define __USED_MBProgressHUD__ (0)
-#define __USED_ASIHTTPRequest__ (0)
-#define __USED_CocosDenshion__ (0)
+#define __USED_FMDatabase__         (0)
+#define __USED_MBProgressHUD__      (0)
+#define __USED_ASIHTTPRequest__     (0)
+#define __USED_CocosDenshion__      (0)
+
+#define __OPEN_Statistics__         (0)
 
 #endif
 
@@ -40,4 +42,8 @@
 
 #if (1 == __USED_CocosDenshion__)
 #import "SimpleAudioEngine.h"
+#endif
+
+#if (1 == __USED_Statistics__)
+#define UMENG
 #endif

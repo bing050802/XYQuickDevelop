@@ -37,6 +37,13 @@
     [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
     
+    btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame = CGRectMake(0, 700, 60, 30);
+    btn.backgroundColor = [UIColor yellowColor];
+    [btn setTitle:@"replay" forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(btnReplayClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
     UILabel *tmpLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 50)];
     tmpLab.backgroundColor = [UIColor lightGrayColor];
     tmpLab.text = @"test";
@@ -61,7 +68,7 @@
     
     ////////////////////////////  XYSpriteView ////////////////////////////
     XYSpriteView *tmpSprite = [[XYSpriteView alloc] initWithFrame:CGRectMake(300, 0, 600, 768)];
-    [tmpSprite formatImg:@"p3_b_%d" count:24 repeatCount:0];
+    [tmpSprite formatImg:@"p3_b_%d.png" count:24 repeatCount:1];
     [tmpSprite showImgWithIndex:4];
     tmpSprite.delegate = self;
     [[XYSpriteManager sharedInstance].sprites setObject:tmpSprite forKey:@"a"];
@@ -88,6 +95,11 @@
 -(void)btnClick{
     [_testView removePerformRandomDelay];
     [_testView removeFromSuperview];
+}
+-(void)btnReplayClick{
+    XYSpriteView *tmpSprite = [[XYSpriteManager sharedInstance].sprites objectForKey:@"a"];
+    [tmpSprite reset];
+    [tmpSprite start];
 }
 #pragma mark -XYSpriteDelegate
 -(void) spriteOnIndex:(int)aIndex  sprite:(XYSpriteView *)aSprite{

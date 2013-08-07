@@ -14,3 +14,5 @@
 #import "XYExternal.h"
 
 #import "XYUI.h"
+
+#import "StatisticsManager.h"

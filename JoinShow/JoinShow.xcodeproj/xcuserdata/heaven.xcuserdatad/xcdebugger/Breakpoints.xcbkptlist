@@ -17,20 +17,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../XYQuickDevelop/Extension/UIView+XY.m"
-         timestampString = "397027424.822582"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
-         landmarkName = "-replaceMethod_dealloc"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
+         shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../XYQuickDevelop/Extension/UIView+XY.m"
@@ -43,7 +30,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "JoinShow/Test2View.m"
@@ -60,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../XYQuickDevelop/Extension/UIView+XY.m"
-         timestampString = "397027424.822582"
+         timestampString = "397537005.696453"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "34"
-         endingLineNumber = "34"
+         startingLineNumber = "35"
+         endingLineNumber = "35"
          landmarkName = "-addTapGestureWithTarget:action:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -72,25 +59,12 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../XYQuickDevelop/Extension/UIView+XY.m"
-         timestampString = "397027424.822582"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "30"
-         endingLineNumber = "30"
-         landmarkName = "-replaceMethod_dealloc"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "JoinShow/ViewController.m"
-         timestampString = "397127185.145182"
+         timestampString = "397129014.381982"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "84"
-         endingLineNumber = "84"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
          landmarkName = "-didReceiveMemoryWarning"
          landmarkType = "5">
       </FileBreakpoint>
@@ -147,7 +121,7 @@
          landmarkType = "19">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../XYQuickDevelop/Extension/PerformEntity.h"
@@ -160,7 +134,7 @@
          landmarkType = "2">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../XYQuickDevelop/Extension/PerformEntity.m"
@@ -176,38 +150,12 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../XYQuickDevelop/Extension/UIView+XY.m"
-         timestampString = "397028154.08932"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
-         landmarkName = "-replaceMethod_dealloc"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "../XYQuickDevelop/Extension/UIView+XY.m"
-         timestampString = "397028574.780089"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "29"
-         endingLineNumber = "29"
-         landmarkName = "@implementation UIView(XY)"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "JoinShow/ViewController.m"
-         timestampString = "397123443.414788"
+         timestampString = "397128139.899244"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "62"
-         endingLineNumber = "62"
+         startingLineNumber = "69"
+         endingLineNumber = "69"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -221,7 +169,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "378"
          endingLineNumber = "378"
-         landmarkName = "-showImgWithIndex:"
+         landmarkName = "-imagesPath:repeatCount:fromIndex:toIndex:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -234,7 +182,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "372"
          endingLineNumber = "372"
-         landmarkName = "-showImgWithIndex:"
+         landmarkName = "-imagesPath:repeatCount:fromIndex:toIndex:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -242,11 +190,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "JoinShow/ViewController.m"
-         timestampString = "397123524.253603"
+         timestampString = "397128139.899244"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "64"
-         endingLineNumber = "64"
+         startingLineNumber = "71"
+         endingLineNumber = "71"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -260,7 +208,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "346"
          endingLineNumber = "346"
-         landmarkName = "-imagesPath:repeatCount:fromIndex:toIndex:"
+         landmarkName = "-resetCATransform3D"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -273,7 +221,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "361"
          endingLineNumber = "361"
-         landmarkName = "-formatImg:count:repeatCount:"
+         landmarkName = "-imagesPath:repeatCount:fromIndex:toIndex:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -286,7 +234,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "369"
          endingLineNumber = "369"
-         landmarkName = "-formatImg:count:repeatCount:"
+         landmarkName = "-imagesPath:repeatCount:fromIndex:toIndex:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -320,11 +268,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "JoinShow/ViewController.m"
-         timestampString = "397127185.145182"
+         timestampString = "397128139.899244"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "67"
-         endingLineNumber = "67"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
          landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
@@ -338,7 +286,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "121"
          endingLineNumber = "121"
-         landmarkName = "-updateTimer:"
+         landmarkName = "-allFilesAtPath:type:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -346,11 +294,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "JoinShow/ViewController.m"
-         timestampString = "397127185.145182"
+         timestampString = "397129014.381982"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
+         startingLineNumber = "82"
+         endingLineNumber = "82"
          landmarkName = "-changeLabText"
          landmarkType = "5">
       </FileBreakpoint>
@@ -385,11 +333,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "JoinShow/ViewController.m"
-         timestampString = "397127168.62785"
+         timestampString = "397129014.381982"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "93"
-         endingLineNumber = "93"
+         startingLineNumber = "105"
+         endingLineNumber = "105"
          landmarkName = "-spriteOnIndex:sprite:"
          landmarkType = "5">
       </FileBreakpoint>

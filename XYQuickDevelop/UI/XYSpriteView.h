@@ -5,7 +5,10 @@
 #import <QuartzCore/QuartzCore.h>
 #import "XYPrecompile.h"
 
-#define XYSpriteView_deyiffAniFrames 12
+// 帧间隔
+#define XYSpriteView_aniFrames 12
+// 图片资起始编号
+#define XYSpriteView_imgStatr 0
 
 typedef enum{
     SpriteStateUndefine = 0,
@@ -58,7 +61,8 @@ typedef enum{
 @property (nonatomic, assign) NSInteger             repeatCount;        // 重复次数 repeat forever if 0
 @property (nonatomic, assign) NSInteger             curImageIndex;
 @property (nonatomic, retain) NSMutableArray        *imageNameArray;
-@property (nonatomic, copy) NSString                *aniPath;
+@property (nonatomic, copy)   NSString              *aniPath;
+@property (nonatomic, assign) int                   firstImgIndex;      // 默认从0开始
 
 // play all asc顺序, if (from == -1) && (to == 0); play all dec降序, if (from == 0) && (to == -1)
 #pragma -mark to do  排序
@@ -68,18 +72,19 @@ typedef enum{
 - (void) imagesPath:(NSString *)imagesPath repeatCount:(NSUInteger)count;
 */
 // if copy 黄色文件夹
-- (void) formatImg:(NSString *)format count:(int)count2 repeatCount:(NSUInteger)count;
+-(void) formatImg:(NSString *)format count:(int)count2 repeatCount:(NSUInteger)count;
 
-- (void) showImgWithIndex:(int)index;
+-(void) showImgWithIndex:(int)index;
+-(BOOL) setFromIndex:(int)from toindex:(int)to;
 
 //- (void)duration:(NSTimeInterval)dur interval:(NSTimeInterval)i delay:(NSTimeInterval)d;
 
 #pragma mark - todo
 // 更新下一张图片
-- (void) updateImage;
+-(void) updateImage;
  
 // 每到时间点刷一次
-- (void) updateTimer:(NSTimeInterval)time;
+-(void) updateTimer:(NSTimeInterval)time;
 
 -(void) start;
 -(void) pause;

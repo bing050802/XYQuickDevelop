@@ -27,10 +27,6 @@
 }
  */
 
--(void) replaceMethod_dealloc{
-    XY_swizzleInstanceMethod([self class], @selector(dealloc), @selector(UIView_dealloc));
-}
-
 -(void) addTapGestureWithTarget:(id)target action:(SEL)action{
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:target action:action];
     [self addGestureRecognizer:tap];
@@ -52,7 +48,7 @@
     [tap release];
     
     objc_setAssociatedObject(self, UIView_key_tapBlock, aBlock, OBJC_ASSOCIATION_COPY);
-    [self replaceMethod_dealloc];
+    XY_swizzleInstanceMethod([self class], @selector(dealloc), @selector(UIView_dealloc));
 }
 -(void)actionTap{
     void (^aBlock)(void) = objc_getAssociatedObject(self, UIView_key_tapBlock);

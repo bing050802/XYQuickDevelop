@@ -50,6 +50,7 @@
         _duration = 0;
         _interval = 0;
         _delay = 0;
+        _firstImgIndex = 0;
         isDelayed = NO;
         
         _isTransformLR = NO;
@@ -73,7 +74,7 @@
     state = SpriteStatePause;
 }
 -(void)reset{
-    _curImageIndex = 0;
+    _curImageIndex = fromIndex;
     curRepeatCount = 0;
     _curTime = 0;
     state = SpriteStateStop;
@@ -82,6 +83,8 @@
     DelegateSelf(spriteWillStop:)
     state = SpriteStateStop;
 }
+
+// if fileType == nil, support png, jpg
 - (NSMutableArray *)allFilesAtPath:(NSString *)direString type:(NSString*)fileType
 {
     NSMutableArray *pathArray = [NSMutableArray array];
@@ -94,7 +97,11 @@
         return nil;
     }
     
-    NSString* strType = [NSString stringWithFormat:@".%@",fileType];
+    NSString* strType;
+    if (fileType) {
+        strType = [NSString stringWithFormat:@".%@",fileType];
+    }
+    
     for (NSString *fileName in tempArray) {
         BOOL flag = YES;
         NSString *path = [direString stringByAppendingPathComponent:fileName];
@@ -104,11 +111,21 @@
         {
             if (!flag) {
                 
-                if ([fileName hasSuffix:strType]) {
-                    
-                    [pathArray addObject:fileName];
-                    
+                if (strType) {
+                    if ([fileName hasSuffix:strType]) {
+                        
+                        [pathArray addObject:fileName];
+                        
+                    }
+                }else
+                {
+                    if ([fileName hasSuffix:@".png"] || [fileName hasSuffix:@".jpg"]) {
+                        
+                        [pathArray addObject:fileName];
+                        
+                    }
                 }
+                
             }
             else {
                 
@@ -156,7 +173,7 @@
             curRepeatCount++;
             _curTime = _curTime - allTime;
             _curImageIndex = fromIndex;
-            self->state = SpriteStatePlaying;
+            state = SpriteStatePlaying;
         }
     }else{
         // curTime < duration
@@ -177,7 +194,7 @@
             }
             self.layer.contents = nil;
             NSString *imageName = [_imageNameArray objectAtIndex:_curImageIndex];
-            NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@.png", self.aniPath, imageName];
+            NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@", self.aniPath, imageName];
             NSString *path = [Common dataFilePath:tmpStr ofType:kCommon_dataFilePath_app];
             [tmpStr release];
             
@@ -235,7 +252,7 @@
         
         self.layer.contents = nil;
         NSString *imageName = [_imageNameArray objectAtIndex:_curImageIndex];
-        NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@.png", self.aniPath, imageName];
+        NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@", self.aniPath, imageName];
         NSString *path = [Common dataFilePath:tmpStr ofType:kCommon_dataFilePath_app];
         [tmpStr release];
         
@@ -247,10 +264,10 @@
     }
 }
 
--(void)setFromIndex:(int)from toindex:(int)to{
+-(BOOL) setFromIndex:(int)from toindex:(int)to{
 #pragma mark - todo 边界值, 正反序
     if (to >= [_imageNameArray count] || from < -1 || to < -1 || from >= [_imageNameArray count]) {
-        //   return;
+        return NO;
     }
     
     if (from > to)
@@ -276,10 +293,12 @@
     
     _curImageIndex = fromIndex;
     oneImgTurnCount = abs(fromIndex - toIndex) + 1;
-    _duration = oneImgTurnCount / XYSpriteView_deyiffAniFrames;
+    _duration = oneImgTurnCount / XYSpriteView_aniFrames;
     allTime = _duration + _interval;
     
     animInterval = _duration / oneImgTurnCount;
+    
+    return YES;
 }
 
 -(void)setDelay:(NSTimeInterval)delay{
@@ -343,6 +362,9 @@
         // return;
     }
     
+    if (!imagesPath) return;
+
+#pragma mark -todo 后缀
     NSMutableArray *tmpArray = [self allFilesAtPath:imagesPath type:@"png"];
     
     if (!tmpArray || [tmpArray count] == 0) {
@@ -362,7 +384,7 @@
     _repeatCount = count;
 
     [_imageNameArray removeAllObjects];
-    for (int i = 0; i < count2; i++) {
+    for (int i = 0 + _firstImgIndex; i < count2 + _firstImgIndex; i++) {
         [_imageNameArray addObject:[NSString stringWithFormat:format, i]];
     }
     
@@ -376,7 +398,7 @@
     
     self.layer.contents = nil;
     NSString *imageName = [_imageNameArray objectAtIndex:index];
-    NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@.png", self.aniPath, imageName];
+    NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@", self.aniPath, imageName];
     NSString *path = [Common dataFilePath:tmpStr ofType:kCommon_dataFilePath_app];
     [tmpStr release];
     
