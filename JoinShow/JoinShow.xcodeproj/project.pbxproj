@@ -95,8 +95,14 @@
 		57E852C917B1F58E00C664F4 /* XYAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852AF17B1F58D00C664F4 /* XYAnimationView.m */; };
 		57E852CA17B1F58E00C664F4 /* XYSpriteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852B117B1F58D00C664F4 /* XYSpriteManager.m */; };
 		57E852CB17B1F58E00C664F4 /* XYSpriteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852B317B1F58D00C664F4 /* XYSpriteView.m */; };
-		57E852CE17B1F64300C664F4 /* StatisticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852CD17B1F64300C664F4 /* StatisticsManager.m */; };
+		57E852CE17B1F64300C664F4 /* UmengManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852CD17B1F64300C664F4 /* UmengManager.m */; };
 		57E852D217B1FD5200C664F4 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E852D017B1FD5200C664F4 /* libMobClickLibrary.a */; };
+		57E852DD17B224CD00C664F4 /* BaseNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852D517B224CD00C664F4 /* BaseNSObject.m */; };
+		57E852DE17B224CD00C664F4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852D817B224CD00C664F4 /* JSONKit.m */; };
+		57E852DF17B224CD00C664F4 /* NSData+IJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852DA17B224CD00C664F4 /* NSData+IJson.m */; };
+		57E852E017B224CD00C664F4 /* NSString+IJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852DC17B224CD00C664F4 /* NSString+IJson.m */; };
+		57E852E217B224E500C664F4 /* json2.json in Resources */ = {isa = PBXBuildFile; fileRef = 57E852E117B224E500C664F4 /* json2.json */; };
+		57E852F517B2271000C664F4 /* BookInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E852F417B2270F00C664F4 /* BookInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -234,10 +240,21 @@
 		57E852B417B1F58D00C664F4 /* XYUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYUI.h; sourceTree = "<group>"; };
 		57E852B517B1F58D00C664F4 /* XYCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYCommon.h; sourceTree = "<group>"; };
 		57E852B617B1F58D00C664F4 /* XYPrecompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPrecompile.h; sourceTree = "<group>"; };
-		57E852CC17B1F64300C664F4 /* StatisticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatisticsManager.h; sourceTree = "<group>"; };
-		57E852CD17B1F64300C664F4 /* StatisticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatisticsManager.m; sourceTree = "<group>"; };
+		57E852CC17B1F64300C664F4 /* UmengManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmengManager.h; sourceTree = "<group>"; };
+		57E852CD17B1F64300C664F4 /* UmengManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmengManager.m; sourceTree = "<group>"; };
 		57E852D017B1FD5200C664F4 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
 		57E852D117B1FD5200C664F4 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		57E852D417B224CD00C664F4 /* BaseNSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNSObject.h; sourceTree = "<group>"; };
+		57E852D517B224CD00C664F4 /* BaseNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNSObject.m; sourceTree = "<group>"; };
+		57E852D717B224CD00C664F4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		57E852D817B224CD00C664F4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		57E852D917B224CD00C664F4 /* NSData+IJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+IJson.h"; sourceTree = "<group>"; };
+		57E852DA17B224CD00C664F4 /* NSData+IJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+IJson.m"; sourceTree = "<group>"; };
+		57E852DB17B224CD00C664F4 /* NSString+IJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+IJson.h"; sourceTree = "<group>"; };
+		57E852DC17B224CD00C664F4 /* NSString+IJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+IJson.m"; sourceTree = "<group>"; };
+		57E852E117B224E500C664F4 /* json2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = json2.json; sourceTree = "<group>"; };
+		57E852F317B2270F00C664F4 /* BookInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookInfo.h; sourceTree = "<group>"; };
+		57E852F417B2270F00C664F4 /* BookInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -273,6 +290,7 @@
 		57525A4C17AB9E300094D835 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				57E852E117B224E500C664F4 /* json2.json */,
 				57525A7E17ABB3910094D835 /* p1_a */,
 				57525A4D17AB9E3E0094D835 /* p3_b */,
 			);
@@ -392,6 +410,7 @@
 		57B3FFEF177AD9BC00775FC9 /* JoinShow */ = {
 			isa = PBXGroup;
 			children = (
+				57E852D317B224CD00C664F4 /* JsonToNSObject */,
 				57E8527717B1F58D00C664F4 /* XYQuickDevelop */,
 				57B3FFF8177AD9BC00775FC9 /* AppDelegate.h */,
 				57B3FFF9177AD9BC00775FC9 /* AppDelegate.m */,
@@ -401,6 +420,8 @@
 				579ECE1F17A8EF8900687AF2 /* TestView.m */,
 				579ECE2217A911AF00687AF2 /* Test2View.h */,
 				579ECE2317A911AF00687AF2 /* Test2View.m */,
+				57E852F317B2270F00C664F4 /* BookInfo.h */,
+				57E852F417B2270F00C664F4 /* BookInfo.m */,
 				57B30004177AD9BC00775FC9 /* ViewController.xib */,
 				57B3FFF0177AD9BC00775FC9 /* Supporting Files */,
 			);
@@ -560,8 +581,8 @@
 				57E852AA17B1F58D00C664F4 /* XYFunction.m */,
 				57E852AB17B1F58D00C664F4 /* XYThread.h */,
 				57E852AC17B1F58D00C664F4 /* XYThread.m */,
-				57E852CC17B1F64300C664F4 /* StatisticsManager.h */,
-				57E852CD17B1F64300C664F4 /* StatisticsManager.m */,
+				57E852CC17B1F64300C664F4 /* UmengManager.h */,
+				57E852CD17B1F64300C664F4 /* UmengManager.m */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -587,6 +608,29 @@
 				57E852D117B1FD5200C664F4 /* MobClick.h */,
 			);
 			path = UMAnalytics_Sdk_2.2.0.OpenUDID;
+			sourceTree = "<group>";
+		};
+		57E852D317B224CD00C664F4 /* JsonToNSObject */ = {
+			isa = PBXGroup;
+			children = (
+				57E852D417B224CD00C664F4 /* BaseNSObject.h */,
+				57E852D517B224CD00C664F4 /* BaseNSObject.m */,
+				57E852D617B224CD00C664F4 /* JSONKit */,
+				57E852D917B224CD00C664F4 /* NSData+IJson.h */,
+				57E852DA17B224CD00C664F4 /* NSData+IJson.m */,
+				57E852DB17B224CD00C664F4 /* NSString+IJson.h */,
+				57E852DC17B224CD00C664F4 /* NSString+IJson.m */,
+			);
+			path = JsonToNSObject;
+			sourceTree = "<group>";
+		};
+		57E852D617B224CD00C664F4 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				57E852D717B224CD00C664F4 /* JSONKit.h */,
+				57E852D817B224CD00C664F4 /* JSONKit.m */,
+			);
+			path = JSONKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -715,6 +759,7 @@
 				57525AA017ABB3910094D835 /* p1_a_7.png in Resources */,
 				57525AA117ABB3910094D835 /* p1_a_8.png in Resources */,
 				57525AA217ABB3910094D835 /* p1_a_9.png in Resources */,
+				57E852E217B224E500C664F4 /* json2.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -777,7 +822,12 @@
 				57E852C917B1F58E00C664F4 /* XYAnimationView.m in Sources */,
 				57E852CA17B1F58E00C664F4 /* XYSpriteManager.m in Sources */,
 				57E852CB17B1F58E00C664F4 /* XYSpriteView.m in Sources */,
-				57E852CE17B1F64300C664F4 /* StatisticsManager.m in Sources */,
+				57E852CE17B1F64300C664F4 /* UmengManager.m in Sources */,
+				57E852DD17B224CD00C664F4 /* BaseNSObject.m in Sources */,
+				57E852DE17B224CD00C664F4 /* JSONKit.m in Sources */,
+				57E852DF17B224CD00C664F4 /* NSData+IJson.m in Sources */,
+				57E852E017B224CD00C664F4 /* NSString+IJson.m in Sources */,
+				57E852F517B2271000C664F4 /* BookInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

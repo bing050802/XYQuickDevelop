@@ -51,7 +51,7 @@ return __singleton__; \
 }
 
 /**************************************************************/
-// GDC 多线程
+// GCD 多线程
 #define Common_MainFun(aFun) dispatch_async( dispatch_get_main_queue(), ^(void){aFun;} );
 #define Common_MainBlock(block) dispatch_async( dispatch_get_main_queue(), block );
 

@@ -22,9 +22,9 @@
 #define Umeng_checkUpdate [UmengManager checkUpdate];
 #define Umeng_updateOnlineConfig  [UmengManager updateOnlineConfig];
 
-@interface StatisticsManager : NSObject
+@interface UmengManager : NSObject
 
-//XY_SINGLETON(StatisticsManager)
+//XY_SINGLETON(UmengManager)
 
 +(void) startWithAppkey;
 +(void) beginLogPageView:(NSString *)str;

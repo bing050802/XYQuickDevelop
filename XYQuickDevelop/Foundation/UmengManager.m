@@ -6,9 +6,11 @@
 //  Copyright (c) 2013年 Heaven. All rights reserved.
 //
 
-#import "StatisticsManager.h"
+#import "UmengManager.h"
 
-@implementation StatisticsManager
+@implementation UmengManager
+
+//DEF_SINGLETON(UmengManager)
 
 +(void)startWithAppkey{
 #ifdef UMENG

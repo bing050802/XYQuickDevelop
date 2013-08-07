@@ -161,6 +161,7 @@
     }
     
     if (_curTime >= allTime) {
+        [self showImgWithIndex:toIndex];
         if (curRepeatCount + 1 >= _repeatCount && _repeatCount != 0)
         {
             // 播放完成
@@ -179,7 +180,7 @@
         // curTime < duration
         state = SpriteStatePlaying;
         NSInteger index = _isReverseOrder ? fromIndex - (NSInteger)(_curTime / animInterval) : (NSInteger)(_curTime / animInterval) + fromIndex;
-        //   CCLOG(@"%s, index:%d:,", __FUNCTION__, index);
+        NSLogD(@"%s, index:%d:, count:%d", __FUNCTION__, index, _imageNameArray.count);
         // 判断范围
         BOOL b;
         if (_isReverseOrder) {
@@ -192,15 +193,7 @@
             if (_delegate && [_delegate respondsToSelector:@selector(spriteOnIndex:sprite:)]) {
                 [_delegate spriteOnIndex:_curImageIndex sprite:self];
             }
-            self.layer.contents = nil;
-            NSString *imageName = [_imageNameArray objectAtIndex:_curImageIndex];
-            NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@", self.aniPath, imageName];
-            NSString *path = [Common dataFilePath:tmpStr ofType:kCommon_dataFilePath_app];
-            [tmpStr release];
-            
-            UIImage *tmpIMG = [[UIImage alloc] initWithContentsOfFile:path];
-            self.layer.contents = (id)tmpIMG.CGImage;
-            [tmpIMG release];;
+            [self showImgWithIndex:_curImageIndex];
         }
         
         _curTime += time;
@@ -224,15 +217,7 @@
             _curImageIndex = 0;
             
         }
-        self.layer.contents = nil;
-        NSString *imageName = [_imageNameArray objectAtIndex:_curImageIndex];
-        NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@", self.aniPath, imageName];
-        NSString *path = [Common dataFilePath:tmpStr ofType:kCommon_dataFilePath_app];
-        [tmpStr release];
-        
-        UIImage *tmpIMG = [[UIImage alloc] initWithContentsOfFile:path];
-        self.layer.contents = (id)tmpIMG.CGImage;
-        [tmpIMG release];
+        [self showImgWithIndex:_curImageIndex];
         _curImageIndex++;
     }
     else
@@ -249,16 +234,7 @@
                 _curImageIndex = 0;
             }
         }
-        
-        self.layer.contents = nil;
-        NSString *imageName = [_imageNameArray objectAtIndex:_curImageIndex];
-        NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@", self.aniPath, imageName];
-        NSString *path = [Common dataFilePath:tmpStr ofType:kCommon_dataFilePath_app];
-        [tmpStr release];
-        
-        UIImage *tmpIMG = [[UIImage alloc] initWithContentsOfFile:path];
-        self.layer.contents = (id)tmpIMG.CGImage;
-        [tmpIMG release];
+        [self showImgWithIndex:_curImageIndex];
         _curImageIndex++;
         
     }

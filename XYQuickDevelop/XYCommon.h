@@ -15,4 +15,4 @@
 
 #import "XYUI.h"
 
-#import "StatisticsManager.h"
+#import "UmengManager.h"
