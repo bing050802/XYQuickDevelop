@@ -272,14 +272,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57B3FFEA177AD9BC00775FC9 /* UIKit.framework in Frameworks */,
 				57525A4517AB7DEA0094D835 /* QuartzCore.framework in Frameworks */,
 				57BE89BD17AA531200FCD864 /* OpenAL.framework in Frameworks */,
-				57BE89BB17AA52E700FCD864 /* AudioToolbox.framework in Frameworks */,
 				57BE89B917AA525200FCD864 /* AVFoundation.framework in Frameworks */,
 				579ECE1D17A8E90B00687AF2 /* CoreText.framework in Frameworks */,
-				57B3FFEA177AD9BC00775FC9 /* UIKit.framework in Frameworks */,
 				57B3FFEC177AD9BC00775FC9 /* Foundation.framework in Frameworks */,
 				57B3FFEE177AD9BC00775FC9 /* CoreGraphics.framework in Frameworks */,
+				57BE89BB17AA52E700FCD864 /* AudioToolbox.framework in Frameworks */,
 				57E852D217B1FD5200C664F4 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -410,19 +410,9 @@
 		57B3FFEF177AD9BC00775FC9 /* JoinShow */ = {
 			isa = PBXGroup;
 			children = (
+				57D5B88417B8ABBB009212F7 /* AppDelegate */,
 				57E852D317B224CD00C664F4 /* JsonToNSObject */,
 				57E8527717B1F58D00C664F4 /* XYQuickDevelop */,
-				57B3FFF8177AD9BC00775FC9 /* AppDelegate.h */,
-				57B3FFF9177AD9BC00775FC9 /* AppDelegate.m */,
-				57B30001177AD9BC00775FC9 /* ViewController.h */,
-				57B30002177AD9BC00775FC9 /* ViewController.m */,
-				579ECE1E17A8EF8900687AF2 /* TestView.h */,
-				579ECE1F17A8EF8900687AF2 /* TestView.m */,
-				579ECE2217A911AF00687AF2 /* Test2View.h */,
-				579ECE2317A911AF00687AF2 /* Test2View.m */,
-				57E852F317B2270F00C664F4 /* BookInfo.h */,
-				57E852F417B2270F00C664F4 /* BookInfo.m */,
-				57B30004177AD9BC00775FC9 /* ViewController.xib */,
 				57B3FFF0177AD9BC00775FC9 /* Supporting Files */,
 			);
 			path = JoinShow;
@@ -441,6 +431,24 @@
 				57B3FFFF177AD9BC00775FC9 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		57D5B88417B8ABBB009212F7 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				57B3FFF8177AD9BC00775FC9 /* AppDelegate.h */,
+				57B3FFF9177AD9BC00775FC9 /* AppDelegate.m */,
+				57B30001177AD9BC00775FC9 /* ViewController.h */,
+				57B30002177AD9BC00775FC9 /* ViewController.m */,
+				579ECE1E17A8EF8900687AF2 /* TestView.h */,
+				579ECE1F17A8EF8900687AF2 /* TestView.m */,
+				579ECE2217A911AF00687AF2 /* Test2View.h */,
+				579ECE2317A911AF00687AF2 /* Test2View.m */,
+				57E852F317B2270F00C664F4 /* BookInfo.h */,
+				57E852F417B2270F00C664F4 /* BookInfo.m */,
+				57B30004177AD9BC00775FC9 /* ViewController.xib */,
+			);
+			name = AppDelegate;
 			sourceTree = "<group>";
 		};
 		57E8527717B1F58D00C664F4 /* XYQuickDevelop */ = {
@@ -930,6 +938,12 @@
 		57B3001F177AD9BC00775FC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../..\"",
+					"\"$(SRCROOT)/Test.embeddedframework\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JoinShow/JoinShow-Prefix.pch";
 				INFOPLIST_FILE = "JoinShow/JoinShow-Info.plist";
@@ -945,6 +959,12 @@
 		57B30020177AD9BC00775FC9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/../../../..\"",
+					"\"$(SRCROOT)/Test.embeddedframework\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JoinShow/JoinShow-Prefix.pch";
 				INFOPLIST_FILE = "JoinShow/JoinShow-Info.plist";

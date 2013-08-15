@@ -90,7 +90,7 @@
     NSMutableArray *pathArray = [NSMutableArray array];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *str = [Common dataFilePath:direString ofType:kCommon_dataFilePath_app];
+    NSString *str = [Common dataFilePath:direString ofType:filePathOption_app];
     NSArray *tempArray = [fileManager contentsOfDirectoryAtPath:str error:nil];
     
     if (tempArray == nil) {
@@ -105,7 +105,7 @@
     for (NSString *fileName in tempArray) {
         BOOL flag = YES;
         NSString *path = [direString stringByAppendingPathComponent:fileName];
-        NSString *fullPath = [Common dataFilePath:path ofType:kCommon_dataFilePath_app];
+        NSString *fullPath = [Common dataFilePath:path ofType:filePathOption_app];
         
         if ([fileManager fileExistsAtPath:fullPath isDirectory:&flag])
         {
@@ -371,16 +371,17 @@
     if (self.imageNameArray.count == 0 || index > self.imageNameArray.count - 1) {
         return;
     }
-    
-    self.layer.contents = nil;
     NSString *imageName = [_imageNameArray objectAtIndex:index];
     NSString *tmpStr = [[NSString alloc] initWithFormat:@"%@/%@", self.aniPath, imageName];
-    NSString *path = [Common dataFilePath:tmpStr ofType:kCommon_dataFilePath_app];
+    NSString *path = [Common dataFilePath:tmpStr ofType:filePathOption_app];
     [tmpStr release];
     
-    UIImage *tmpIMG = [[UIImage alloc] initWithContentsOfFile:path];
-    self.layer.contents = (id)tmpIMG.CGImage;
-    [tmpIMG release];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        self.layer.contents = nil;
+        UIImage *tmpIMG = [[UIImage alloc] initWithContentsOfFile:path];
+        self.layer.contents = (id)tmpIMG.CGImage;
+        [tmpIMG release];
+    }
 }
 - (void)duration:(NSTimeInterval)dur interval:(NSTimeInterval)i delay:(NSTimeInterval)d{
     _duration = dur;

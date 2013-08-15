@@ -29,11 +29,16 @@
     self.viewController = [[[ViewController alloc] initWithNibName:@"ViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
+    
+    // 解析json
+    /*
     NSString *path = [Common dataFilePath:@"json2.json" ofType:kCommon_dataFilePath_app];
     NSString *str = [[NSString alloc] initWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-      
     NSArray *array  = [str jsonStringToNSObjectsWithKey:nil andClass:[BookInfo class]];
+    */
     
+    NSString *path = [Common dataFilePath:@"a/b/c.jpg" ofType:filePathOption_documents];
+    [Common createDirectoryAtPath:path];
     return YES;
 }
 

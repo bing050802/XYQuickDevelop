@@ -37,9 +37,11 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
  
 }
 /***************************************************************/
-#define kCommon_dataFilePath_documents 1
-#define kCommon_dataFilePath_tmp 2
-#define kCommon_dataFilePath_app 3
+typedef enum {
+    filePathOption_documents = 1,
+    filePathOption_tmp,
+    filePathOption_app,
+} FilePathOption;
 // 返回文件路径的方法
 /*
  * api parameters 说明
@@ -47,7 +49,7 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
  * file 文件名
  * kType 文件所在目录类型. kCommon_dataFilePath_documents documents文件夹里,kCommon_dataFilePath_tmp Tmp文件夹里,kCommon_dataFilePath_app app文件夹里.
  */
-+ (NSString *) dataFilePath:(NSString *)file ofType:(int)kType;
++ (NSString *) dataFilePath:(NSString *)file ofType:(FilePathOption)kType;
 
 /***************************************************************/
 // Unicode格式的字符串编码转成中文的方法(如\u7E8C)转换成中文,unicode编码以\u开头
@@ -59,9 +61,11 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
 + (NSString *) replaceUnicode:(NSString *)unicodeStr;
 
 /***************************************************************/
-#define kCommon_rangeOfString_middle 1
-#define kCommon_rangeOfString_front  2
-#define kCommon_rangeOfString_back   3
+typedef enum {
+    markOption_middle = 1,
+    markOption_front,
+    markOption_back,
+} MarkOption;
 // 返回字符串的位置的方法
 /* rangeOfString:返回range. rangeArrayOfString:返回range数组
  * api parameters 说明
@@ -71,13 +75,13 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
  * strMark 需要查找的字符串的标记
  * strStart 起始标记
  * strEnd 结束标记
- * operation 模式. kCommon_rangeOfString_middle mark在Start和end中间,当Start=mark时,返回 Start和end中间的Range
- *                kCommon_rangeOfString_front: mark在Start和end前面   kCommon_rangeOfString_back: mark在Start和end后面
+ * operation 模式. markOption_middle mark在Start和end中间,当Start=mark时,返回 Start和end中间的Range
+ *                markOption_front: mark在Start和end前面   markOption_back: mark在Start和end后面
  * block 每一个字符串都执行该block
  */
-+(NSRange) rangeOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation;
-+(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation;
-+(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation everyStringExecuteBlock:(void(^)(NSRange rangeEvery))block;
++(NSRange) rangeOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(MarkOption)operation;
++(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(MarkOption)operation;
++(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(MarkOption)operation everyStringExecuteBlock:(void(^)(NSRange rangeEvery))block;
 /***************************************************************/
 #define kLastLocation -1
 // 返回没有属性的xml中指定节点的值的方法
@@ -280,11 +284,11 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
 // 有提示框弹出
 +(void) checkUpdateInAppStore:(NSString *)appID curVersion:(NSString *)aVersion appURLString:(NSString *)strURL
                          same:(void(^)(void))blockSame
-                    stayStill:(void(^)(void))blockstayStill;
+                    stayStill:(void(^)(void))blockStayStill;
 // 需要自己处理弹出对话框
 +(void) checkUpdateInAppStore:(NSString *)appID curVersion:(NSString *)aVersion
                          same:(void(^)(void))blockSame
-                   localIsOld:(void(^)(NSString *appStoreVersion))blocklocalIsOld;
+                   localIsOld:(void(^)(NSString *appStoreVersion))blockLocalIsOld;
 #endif
 /****************************************************************/
 /** 版本号比大小
@@ -301,4 +305,10 @@ static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
  */
 +(NSMutableDictionary *) dictionaryOfObject:(id)aObject;
 
+/****************************************************************/
+/** 创建目录
+ * api parameters 说明
+ * aPath 目录路径
+ */
++(void) createDirectoryAtPath:(NSString *)aPath;
 @end
