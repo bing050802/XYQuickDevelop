@@ -16,4 +16,4 @@
 #import "UIView+XY.h"
 #import "NSObject+XY.h"
 
-#import "XYCommon.h"
+#import "XYQuickDevelop.h"

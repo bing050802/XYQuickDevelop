@@ -25,7 +25,7 @@
 #import <objc/runtime.h>
 
 #import "CommonDefine.h"
-#import "XYCommon.h"
+#import "XYQuickDevelop.h"
 
 // 第三方支持
 #if (1 == __USED_FMDatabase__)

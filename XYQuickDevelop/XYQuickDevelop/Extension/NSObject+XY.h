@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+MAKE_CATEGORIES_LOADABLE(NSObject_xy);
+
 @interface NSObject (XY)
 #pragma mark -todo 拆分参数
 // 目前只支持添加一个随机时间执行

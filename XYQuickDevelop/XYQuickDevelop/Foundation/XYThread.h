@@ -25,7 +25,7 @@
 
 #pragma mark -
 
-#import "XYCommon.h"
+#import "XYQuickDevelop.h"
 
 
 @interface XYGCD : NSObject

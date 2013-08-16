@@ -6,7 +6,7 @@
 //  Copyright (c) 2013年 Heaven. All rights reserved.
 //
 // 目前用的是友盟
-#import "XYCommon.h"
+#import "XYQuickDevelop.h"
 
 
 #ifdef UMENG

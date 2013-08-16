@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+MAKE_CATEGORIES_LOADABLE(UIView_xy);
 @interface UIView (XY)
 
 -(void) addTapGestureWithTarget:(id)target action:(SEL)action;

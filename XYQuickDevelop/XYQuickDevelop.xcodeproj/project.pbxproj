@@ -1,0 +1,750 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		577C486017BDEF9900C7FC56 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C485F17BDEF9900C7FC56 /* Foundation.framework */; };
+		577C486617BDEF9900C7FC56 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 577C486417BDEF9900C7FC56 /* InfoPlist.strings */; };
+		577C48B117BDEFCD00C7FC56 /* NSObject+XY.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C486E17BDEFCD00C7FC56 /* NSObject+XY.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48B217BDEFCD00C7FC56 /* NSObject+XY.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C486F17BDEFCD00C7FC56 /* NSObject+XY.m */; };
+		577C48B317BDEFCD00C7FC56 /* UIView+XY.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C487017BDEFCD00C7FC56 /* UIView+XY.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48B417BDEFCD00C7FC56 /* UIView+XY.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C487117BDEFCD00C7FC56 /* UIView+XY.m */; };
+		577C48B517BDEFCD00C7FC56 /* XYExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C487217BDEFCD00C7FC56 /* XYExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48B617BDEFCD00C7FC56 /* BlockUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C487617BDEFCD00C7FC56 /* BlockUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48B717BDEFCD00C7FC56 /* BUIControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C487717BDEFCD00C7FC56 /* BUIControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48B817BDEFCD00C7FC56 /* BUIControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C487817BDEFCD00C7FC56 /* BUIControl.m */; };
+		577C48B917BDEFCD00C7FC56 /* BUIView.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C487917BDEFCD00C7FC56 /* BUIView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48BA17BDEFCD00C7FC56 /* BUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C487A17BDEFCD00C7FC56 /* BUIView.m */; };
+		577C48BB17BDEFCD00C7FC56 /* MBProgressHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C487C17BDEFCD00C7FC56 /* MBProgressHUD.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48BC17BDEFCD00C7FC56 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C487D17BDEFCD00C7FC56 /* MBProgressHUD.m */; };
+		577C48BD17BDEFCD00C7FC56 /* RTLabel.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C487F17BDEFCD00C7FC56 /* RTLabel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48BE17BDEFCD00C7FC56 /* RTLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C488017BDEFCD00C7FC56 /* RTLabel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		577C48BF17BDEFCD00C7FC56 /* CDAudioManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C488317BDEFCD00C7FC56 /* CDAudioManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48C017BDEFCD00C7FC56 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C488417BDEFCD00C7FC56 /* CDAudioManager.m */; };
+		577C48C117BDEFCD00C7FC56 /* CDConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C488517BDEFCD00C7FC56 /* CDConfig.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48C217BDEFCD00C7FC56 /* CDOpenALSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C488617BDEFCD00C7FC56 /* CDOpenALSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48C317BDEFCD00C7FC56 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C488717BDEFCD00C7FC56 /* CDOpenALSupport.m */; };
+		577C48C417BDEFCD00C7FC56 /* CocosDenshion.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C488817BDEFCD00C7FC56 /* CocosDenshion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48C517BDEFCD00C7FC56 /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C488917BDEFCD00C7FC56 /* CocosDenshion.m */; };
+		577C48C617BDEFCD00C7FC56 /* SimpleAudioEngine.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C488A17BDEFCD00C7FC56 /* SimpleAudioEngine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48C717BDEFCD00C7FC56 /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C488B17BDEFCD00C7FC56 /* SimpleAudioEngine.m */; };
+		577C48C817BDEFCD00C7FC56 /* OpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C488D17BDEFCD00C7FC56 /* OpenUDID.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48C917BDEFCD00C7FC56 /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C488E17BDEFCD00C7FC56 /* OpenUDID.m */; };
+		577C48CA17BDEFCD00C7FC56 /* SDDataCacheManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C489017BDEFCD00C7FC56 /* SDDataCacheManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48CB17BDEFCD00C7FC56 /* SDDataCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C489117BDEFCD00C7FC56 /* SDDataCacheManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		577C48CC17BDEFCD00C7FC56 /* SDImageView+SDWebCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C489217BDEFCD00C7FC56 /* SDImageView+SDWebCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48CD17BDEFCD00C7FC56 /* SDImageView+SDWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C489317BDEFCD00C7FC56 /* SDImageView+SDWebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		577C48CE17BDEFCD00C7FC56 /* SDNetworkActivityIndicator.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C489417BDEFCD00C7FC56 /* SDNetworkActivityIndicator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48CF17BDEFCD00C7FC56 /* SDNetworkActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C489517BDEFCD00C7FC56 /* SDNetworkActivityIndicator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		577C48D017BDEFCD00C7FC56 /* SDWebDataDownloader.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C489617BDEFCD00C7FC56 /* SDWebDataDownloader.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48D117BDEFCD00C7FC56 /* SDWebDataDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C489717BDEFCD00C7FC56 /* SDWebDataDownloader.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		577C48D217BDEFCD00C7FC56 /* SDWebDataManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C489817BDEFCD00C7FC56 /* SDWebDataManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48D317BDEFCD00C7FC56 /* SDWebDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C489917BDEFCD00C7FC56 /* SDWebDataManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		577C48D417BDEFCD00C7FC56 /* SDWebImageCompatibly.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C489A17BDEFCD00C7FC56 /* SDWebImageCompatibly.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48D517BDEFCD00C7FC56 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C489C17BDEFCD00C7FC56 /* libMobClickLibrary.a */; };
+		577C48D617BDEFCD00C7FC56 /* MobClick.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C489D17BDEFCD00C7FC56 /* MobClick.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48D717BDEFCD00C7FC56 /* XYExternal.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C489E17BDEFCD00C7FC56 /* XYExternal.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48D817BDEFCD00C7FC56 /* CommonDefine.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48A017BDEFCD00C7FC56 /* CommonDefine.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48D917BDEFCD00C7FC56 /* UmengManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48A117BDEFCD00C7FC56 /* UmengManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48DA17BDEFCD00C7FC56 /* UmengManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C48A217BDEFCD00C7FC56 /* UmengManager.m */; };
+		577C48DB17BDEFCD00C7FC56 /* XYFunction.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48A317BDEFCD00C7FC56 /* XYFunction.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48DC17BDEFCD00C7FC56 /* XYFunction.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C48A417BDEFCD00C7FC56 /* XYFunction.m */; };
+		577C48DD17BDEFCD00C7FC56 /* XYThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48A517BDEFCD00C7FC56 /* XYThread.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48DE17BDEFCD00C7FC56 /* XYThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C48A617BDEFCD00C7FC56 /* XYThread.m */; };
+		577C48DF17BDEFCD00C7FC56 /* XYAnimationView.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48A817BDEFCD00C7FC56 /* XYAnimationView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48E017BDEFCD00C7FC56 /* XYAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C48A917BDEFCD00C7FC56 /* XYAnimationView.m */; };
+		577C48E117BDEFCD00C7FC56 /* XYSpriteManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48AA17BDEFCD00C7FC56 /* XYSpriteManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48E217BDEFCD00C7FC56 /* XYSpriteManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C48AB17BDEFCD00C7FC56 /* XYSpriteManager.m */; };
+		577C48E317BDEFCD00C7FC56 /* XYSpriteView.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48AC17BDEFCD00C7FC56 /* XYSpriteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48E417BDEFCD00C7FC56 /* XYSpriteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 577C48AD17BDEFCD00C7FC56 /* XYSpriteView.m */; };
+		577C48E517BDEFCD00C7FC56 /* XYUI.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48AE17BDEFCD00C7FC56 /* XYUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48E617BDEFCD00C7FC56 /* XYQuickDevelop.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48AF17BDEFCD00C7FC56 /* XYQuickDevelop.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48E717BDEFCD00C7FC56 /* XYPrecompile.h in Headers */ = {isa = PBXBuildFile; fileRef = 577C48B017BDEFCD00C7FC56 /* XYPrecompile.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		577C48E917BDEFFA00C7FC56 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C48E817BDEFFA00C7FC56 /* UIKit.framework */; };
+		577C48EB17BDF00800C7FC56 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C48EA17BDF00800C7FC56 /* QuartzCore.framework */; };
+		577C48ED17BDF00F00C7FC56 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C48EC17BDF00F00C7FC56 /* OpenAL.framework */; };
+		577C48EF17BDF01500C7FC56 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C48EE17BDF01500C7FC56 /* AudioToolbox.framework */; };
+		577C48F117BDF01B00C7FC56 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C48F017BDF01B00C7FC56 /* AVFoundation.framework */; };
+		577C48F317BDF08C00C7FC56 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C48F217BDF08C00C7FC56 /* CoreText.framework */; };
+		577C48F517BDF09900C7FC56 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C48F417BDF09900C7FC56 /* CoreGraphics.framework */; };
+		577C48F717BDF0A300C7FC56 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 577C48F617BDF0A300C7FC56 /* SenTestingKit.framework */; };
+		577C48FA17BDF1BA00C7FC56 /* XYAnimationView.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C48A917BDEFCD00C7FC56 /* XYAnimationView.m */; };
+		577C48FB17BDF1BA00C7FC56 /* XYSpriteManager.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C48AB17BDEFCD00C7FC56 /* XYSpriteManager.m */; };
+		577C48FC17BDF1BA00C7FC56 /* XYSpriteView.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C48AD17BDEFCD00C7FC56 /* XYSpriteView.m */; };
+		577C48FD17BDF25500C7FC56 /* NSObject+XY.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C486F17BDEFCD00C7FC56 /* NSObject+XY.m */; };
+		577C48FE17BDF25500C7FC56 /* UIView+XY.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C487117BDEFCD00C7FC56 /* UIView+XY.m */; };
+		577C48FF17BDF25500C7FC56 /* BUIControl.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C487817BDEFCD00C7FC56 /* BUIControl.m */; };
+		577C490017BDF25500C7FC56 /* BUIView.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C487A17BDEFCD00C7FC56 /* BUIView.m */; };
+		577C490117BDF25500C7FC56 /* MBProgressHUD.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C487D17BDEFCD00C7FC56 /* MBProgressHUD.m */; };
+		577C490217BDF25500C7FC56 /* RTLabel.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C488017BDEFCD00C7FC56 /* RTLabel.m */; };
+		577C490317BDF25500C7FC56 /* CDAudioManager.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C488417BDEFCD00C7FC56 /* CDAudioManager.m */; };
+		577C490417BDF25500C7FC56 /* CDOpenALSupport.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C488717BDEFCD00C7FC56 /* CDOpenALSupport.m */; };
+		577C490517BDF25500C7FC56 /* CocosDenshion.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C488917BDEFCD00C7FC56 /* CocosDenshion.m */; };
+		577C490617BDF25500C7FC56 /* SimpleAudioEngine.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C488B17BDEFCD00C7FC56 /* SimpleAudioEngine.m */; };
+		577C490717BDF25500C7FC56 /* OpenUDID.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C488E17BDEFCD00C7FC56 /* OpenUDID.m */; };
+		577C490817BDF25500C7FC56 /* SDDataCacheManager.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C489117BDEFCD00C7FC56 /* SDDataCacheManager.m */; };
+		577C490917BDF25500C7FC56 /* SDImageView+SDWebCache.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C489317BDEFCD00C7FC56 /* SDImageView+SDWebCache.m */; };
+		577C490A17BDF25500C7FC56 /* SDNetworkActivityIndicator.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C489517BDEFCD00C7FC56 /* SDNetworkActivityIndicator.m */; };
+		577C490B17BDF25500C7FC56 /* SDWebDataDownloader.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C489717BDEFCD00C7FC56 /* SDWebDataDownloader.m */; };
+		577C490C17BDF25500C7FC56 /* SDWebDataManager.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C489917BDEFCD00C7FC56 /* SDWebDataManager.m */; };
+		577C490E17BDF25500C7FC56 /* UmengManager.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C48A217BDEFCD00C7FC56 /* UmengManager.m */; };
+		577C490F17BDF25500C7FC56 /* XYFunction.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C48A417BDEFCD00C7FC56 /* XYFunction.m */; };
+		577C491017BDF25500C7FC56 /* XYThread.m in Headers */ = {isa = PBXBuildFile; fileRef = 577C48A617BDEFCD00C7FC56 /* XYThread.m */; };
+		577C491A17BDF89200C7FC56 /* libMobClickLibrary.a in Headers */ = {isa = PBXBuildFile; fileRef = 577C489C17BDEFCD00C7FC56 /* libMobClickLibrary.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		577C485C17BDEF9900C7FC56 /* XYQuickDevelop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = XYQuickDevelop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		577C485F17BDEF9900C7FC56 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		577C486317BDEF9900C7FC56 /* XYQuickDevelop-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "XYQuickDevelop-Info.plist"; sourceTree = "<group>"; };
+		577C486517BDEF9900C7FC56 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		577C486717BDEF9900C7FC56 /* XYQuickDevelop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "XYQuickDevelop-Prefix.pch"; sourceTree = "<group>"; };
+		577C486E17BDEFCD00C7FC56 /* NSObject+XY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+XY.h"; sourceTree = "<group>"; };
+		577C486F17BDEFCD00C7FC56 /* NSObject+XY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XY.m"; sourceTree = "<group>"; };
+		577C487017BDEFCD00C7FC56 /* UIView+XY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+XY.h"; sourceTree = "<group>"; };
+		577C487117BDEFCD00C7FC56 /* UIView+XY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+XY.m"; sourceTree = "<group>"; };
+		577C487217BDEFCD00C7FC56 /* XYExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYExtension.h; sourceTree = "<group>"; };
+		577C487617BDEFCD00C7FC56 /* BlockUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockUI.h; sourceTree = "<group>"; };
+		577C487717BDEFCD00C7FC56 /* BUIControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUIControl.h; sourceTree = "<group>"; };
+		577C487817BDEFCD00C7FC56 /* BUIControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUIControl.m; sourceTree = "<group>"; };
+		577C487917BDEFCD00C7FC56 /* BUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BUIView.h; sourceTree = "<group>"; };
+		577C487A17BDEFCD00C7FC56 /* BUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BUIView.m; sourceTree = "<group>"; };
+		577C487C17BDEFCD00C7FC56 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		577C487D17BDEFCD00C7FC56 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		577C487F17BDEFCD00C7FC56 /* RTLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RTLabel.h; sourceTree = "<group>"; };
+		577C488017BDEFCD00C7FC56 /* RTLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RTLabel.m; sourceTree = "<group>"; };
+		577C488317BDEFCD00C7FC56 /* CDAudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDAudioManager.h; sourceTree = "<group>"; };
+		577C488417BDEFCD00C7FC56 /* CDAudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDAudioManager.m; sourceTree = "<group>"; };
+		577C488517BDEFCD00C7FC56 /* CDConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDConfig.h; sourceTree = "<group>"; };
+		577C488617BDEFCD00C7FC56 /* CDOpenALSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDOpenALSupport.h; sourceTree = "<group>"; };
+		577C488717BDEFCD00C7FC56 /* CDOpenALSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDOpenALSupport.m; sourceTree = "<group>"; };
+		577C488817BDEFCD00C7FC56 /* CocosDenshion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocosDenshion.h; sourceTree = "<group>"; };
+		577C488917BDEFCD00C7FC56 /* CocosDenshion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CocosDenshion.m; sourceTree = "<group>"; };
+		577C488A17BDEFCD00C7FC56 /* SimpleAudioEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleAudioEngine.h; sourceTree = "<group>"; };
+		577C488B17BDEFCD00C7FC56 /* SimpleAudioEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleAudioEngine.m; sourceTree = "<group>"; };
+		577C488D17BDEFCD00C7FC56 /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		577C488E17BDEFCD00C7FC56 /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		577C489017BDEFCD00C7FC56 /* SDDataCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDDataCacheManager.h; sourceTree = "<group>"; };
+		577C489117BDEFCD00C7FC56 /* SDDataCacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDDataCacheManager.m; sourceTree = "<group>"; };
+		577C489217BDEFCD00C7FC56 /* SDImageView+SDWebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SDImageView+SDWebCache.h"; sourceTree = "<group>"; };
+		577C489317BDEFCD00C7FC56 /* SDImageView+SDWebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SDImageView+SDWebCache.m"; sourceTree = "<group>"; };
+		577C489417BDEFCD00C7FC56 /* SDNetworkActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDNetworkActivityIndicator.h; sourceTree = "<group>"; };
+		577C489517BDEFCD00C7FC56 /* SDNetworkActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDNetworkActivityIndicator.m; sourceTree = "<group>"; };
+		577C489617BDEFCD00C7FC56 /* SDWebDataDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebDataDownloader.h; sourceTree = "<group>"; };
+		577C489717BDEFCD00C7FC56 /* SDWebDataDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebDataDownloader.m; sourceTree = "<group>"; };
+		577C489817BDEFCD00C7FC56 /* SDWebDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebDataManager.h; sourceTree = "<group>"; };
+		577C489917BDEFCD00C7FC56 /* SDWebDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebDataManager.m; sourceTree = "<group>"; };
+		577C489A17BDEFCD00C7FC56 /* SDWebImageCompatibly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDWebImageCompatibly.h; sourceTree = "<group>"; };
+		577C489C17BDEFCD00C7FC56 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		577C489D17BDEFCD00C7FC56 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		577C489E17BDEFCD00C7FC56 /* XYExternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYExternal.h; sourceTree = "<group>"; };
+		577C48A017BDEFCD00C7FC56 /* CommonDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonDefine.h; sourceTree = "<group>"; };
+		577C48A117BDEFCD00C7FC56 /* UmengManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UmengManager.h; sourceTree = "<group>"; };
+		577C48A217BDEFCD00C7FC56 /* UmengManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UmengManager.m; sourceTree = "<group>"; };
+		577C48A317BDEFCD00C7FC56 /* XYFunction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYFunction.h; sourceTree = "<group>"; };
+		577C48A417BDEFCD00C7FC56 /* XYFunction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYFunction.m; sourceTree = "<group>"; };
+		577C48A517BDEFCD00C7FC56 /* XYThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYThread.h; sourceTree = "<group>"; };
+		577C48A617BDEFCD00C7FC56 /* XYThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYThread.m; sourceTree = "<group>"; };
+		577C48A817BDEFCD00C7FC56 /* XYAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYAnimationView.h; sourceTree = "<group>"; };
+		577C48A917BDEFCD00C7FC56 /* XYAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYAnimationView.m; sourceTree = "<group>"; };
+		577C48AA17BDEFCD00C7FC56 /* XYSpriteManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSpriteManager.h; sourceTree = "<group>"; };
+		577C48AB17BDEFCD00C7FC56 /* XYSpriteManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSpriteManager.m; sourceTree = "<group>"; };
+		577C48AC17BDEFCD00C7FC56 /* XYSpriteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYSpriteView.h; sourceTree = "<group>"; };
+		577C48AD17BDEFCD00C7FC56 /* XYSpriteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYSpriteView.m; sourceTree = "<group>"; };
+		577C48AE17BDEFCD00C7FC56 /* XYUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYUI.h; sourceTree = "<group>"; };
+		577C48AF17BDEFCD00C7FC56 /* XYQuickDevelop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYQuickDevelop.h; sourceTree = "<group>"; };
+		577C48B017BDEFCD00C7FC56 /* XYPrecompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYPrecompile.h; sourceTree = "<group>"; };
+		577C48E817BDEFFA00C7FC56 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		577C48EA17BDF00800C7FC56 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		577C48EC17BDF00F00C7FC56 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		577C48EE17BDF01500C7FC56 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		577C48F017BDF01B00C7FC56 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		577C48F217BDF08C00C7FC56 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		577C48F417BDF09900C7FC56 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		577C48F617BDF0A300C7FC56 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		577C485617BDEF9900C7FC56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				577C48F717BDF0A300C7FC56 /* SenTestingKit.framework in Frameworks */,
+				577C48F517BDF09900C7FC56 /* CoreGraphics.framework in Frameworks */,
+				577C48F317BDF08C00C7FC56 /* CoreText.framework in Frameworks */,
+				577C48F117BDF01B00C7FC56 /* AVFoundation.framework in Frameworks */,
+				577C48EF17BDF01500C7FC56 /* AudioToolbox.framework in Frameworks */,
+				577C48ED17BDF00F00C7FC56 /* OpenAL.framework in Frameworks */,
+				577C48EB17BDF00800C7FC56 /* QuartzCore.framework in Frameworks */,
+				577C48E917BDEFFA00C7FC56 /* UIKit.framework in Frameworks */,
+				577C486017BDEF9900C7FC56 /* Foundation.framework in Frameworks */,
+				577C48D517BDEFCD00C7FC56 /* libMobClickLibrary.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		577C484F17BDEF9900C7FC56 = {
+			isa = PBXGroup;
+			children = (
+				577C486117BDEF9900C7FC56 /* XYQuickDevelop */,
+				577C485E17BDEF9900C7FC56 /* Frameworks */,
+				577C485D17BDEF9900C7FC56 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		577C485D17BDEF9900C7FC56 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				577C485C17BDEF9900C7FC56 /* XYQuickDevelop.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		577C485E17BDEF9900C7FC56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				577C48F617BDF0A300C7FC56 /* SenTestingKit.framework */,
+				577C48F417BDF09900C7FC56 /* CoreGraphics.framework */,
+				577C48F217BDF08C00C7FC56 /* CoreText.framework */,
+				577C48F017BDF01B00C7FC56 /* AVFoundation.framework */,
+				577C48EE17BDF01500C7FC56 /* AudioToolbox.framework */,
+				577C48EC17BDF00F00C7FC56 /* OpenAL.framework */,
+				577C48EA17BDF00800C7FC56 /* QuartzCore.framework */,
+				577C48E817BDEFFA00C7FC56 /* UIKit.framework */,
+				577C485F17BDEF9900C7FC56 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		577C486117BDEF9900C7FC56 /* XYQuickDevelop */ = {
+			isa = PBXGroup;
+			children = (
+				577C486D17BDEFCD00C7FC56 /* Extension */,
+				577C487317BDEFCD00C7FC56 /* External */,
+				577C489F17BDEFCD00C7FC56 /* Foundation */,
+				577C48A717BDEFCD00C7FC56 /* UI */,
+				577C48AF17BDEFCD00C7FC56 /* XYQuickDevelop.h */,
+				577C48B017BDEFCD00C7FC56 /* XYPrecompile.h */,
+				577C486217BDEF9900C7FC56 /* Supporting Files */,
+			);
+			path = XYQuickDevelop;
+			sourceTree = "<group>";
+		};
+		577C486217BDEF9900C7FC56 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				577C486317BDEF9900C7FC56 /* XYQuickDevelop-Info.plist */,
+				577C486417BDEF9900C7FC56 /* InfoPlist.strings */,
+				577C486717BDEF9900C7FC56 /* XYQuickDevelop-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		577C486D17BDEFCD00C7FC56 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				577C486E17BDEFCD00C7FC56 /* NSObject+XY.h */,
+				577C486F17BDEFCD00C7FC56 /* NSObject+XY.m */,
+				577C487017BDEFCD00C7FC56 /* UIView+XY.h */,
+				577C487117BDEFCD00C7FC56 /* UIView+XY.m */,
+				577C487217BDEFCD00C7FC56 /* XYExtension.h */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		577C487317BDEFCD00C7FC56 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				577C487417BDEFCD00C7FC56 /* UI */,
+				577C488117BDEFCD00C7FC56 /* Utilities */,
+				577C489E17BDEFCD00C7FC56 /* XYExternal.h */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		577C487417BDEFCD00C7FC56 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				577C487517BDEFCD00C7FC56 /* BlockUI */,
+				577C487B17BDEFCD00C7FC56 /* MBProgressHUD */,
+				577C487E17BDEFCD00C7FC56 /* RTLabel */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		577C487517BDEFCD00C7FC56 /* BlockUI */ = {
+			isa = PBXGroup;
+			children = (
+				577C487617BDEFCD00C7FC56 /* BlockUI.h */,
+				577C487717BDEFCD00C7FC56 /* BUIControl.h */,
+				577C487817BDEFCD00C7FC56 /* BUIControl.m */,
+				577C487917BDEFCD00C7FC56 /* BUIView.h */,
+				577C487A17BDEFCD00C7FC56 /* BUIView.m */,
+			);
+			path = BlockUI;
+			sourceTree = "<group>";
+		};
+		577C487B17BDEFCD00C7FC56 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				577C487C17BDEFCD00C7FC56 /* MBProgressHUD.h */,
+				577C487D17BDEFCD00C7FC56 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		577C487E17BDEFCD00C7FC56 /* RTLabel */ = {
+			isa = PBXGroup;
+			children = (
+				577C487F17BDEFCD00C7FC56 /* RTLabel.h */,
+				577C488017BDEFCD00C7FC56 /* RTLabel.m */,
+			);
+			path = RTLabel;
+			sourceTree = "<group>";
+		};
+		577C488117BDEFCD00C7FC56 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				577C488217BDEFCD00C7FC56 /* CocosDenshion */,
+				577C488C17BDEFCD00C7FC56 /* OpenUDID */,
+				577C488F17BDEFCD00C7FC56 /* SDWebData_1.1.1 */,
+				577C489B17BDEFCD00C7FC56 /* UMAnalytics_Sdk_2.2.0.OpenUDID */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		577C488217BDEFCD00C7FC56 /* CocosDenshion */ = {
+			isa = PBXGroup;
+			children = (
+				577C488317BDEFCD00C7FC56 /* CDAudioManager.h */,
+				577C488417BDEFCD00C7FC56 /* CDAudioManager.m */,
+				577C488517BDEFCD00C7FC56 /* CDConfig.h */,
+				577C488617BDEFCD00C7FC56 /* CDOpenALSupport.h */,
+				577C488717BDEFCD00C7FC56 /* CDOpenALSupport.m */,
+				577C488817BDEFCD00C7FC56 /* CocosDenshion.h */,
+				577C488917BDEFCD00C7FC56 /* CocosDenshion.m */,
+				577C488A17BDEFCD00C7FC56 /* SimpleAudioEngine.h */,
+				577C488B17BDEFCD00C7FC56 /* SimpleAudioEngine.m */,
+			);
+			path = CocosDenshion;
+			sourceTree = "<group>";
+		};
+		577C488C17BDEFCD00C7FC56 /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				577C488D17BDEFCD00C7FC56 /* OpenUDID.h */,
+				577C488E17BDEFCD00C7FC56 /* OpenUDID.m */,
+			);
+			path = OpenUDID;
+			sourceTree = "<group>";
+		};
+		577C488F17BDEFCD00C7FC56 /* SDWebData_1.1.1 */ = {
+			isa = PBXGroup;
+			children = (
+				577C489017BDEFCD00C7FC56 /* SDDataCacheManager.h */,
+				577C489117BDEFCD00C7FC56 /* SDDataCacheManager.m */,
+				577C489217BDEFCD00C7FC56 /* SDImageView+SDWebCache.h */,
+				577C489317BDEFCD00C7FC56 /* SDImageView+SDWebCache.m */,
+				577C489417BDEFCD00C7FC56 /* SDNetworkActivityIndicator.h */,
+				577C489517BDEFCD00C7FC56 /* SDNetworkActivityIndicator.m */,
+				577C489617BDEFCD00C7FC56 /* SDWebDataDownloader.h */,
+				577C489717BDEFCD00C7FC56 /* SDWebDataDownloader.m */,
+				577C489817BDEFCD00C7FC56 /* SDWebDataManager.h */,
+				577C489917BDEFCD00C7FC56 /* SDWebDataManager.m */,
+				577C489A17BDEFCD00C7FC56 /* SDWebImageCompatibly.h */,
+			);
+			path = SDWebData_1.1.1;
+			sourceTree = "<group>";
+		};
+		577C489B17BDEFCD00C7FC56 /* UMAnalytics_Sdk_2.2.0.OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				577C489C17BDEFCD00C7FC56 /* libMobClickLibrary.a */,
+				577C489D17BDEFCD00C7FC56 /* MobClick.h */,
+			);
+			path = UMAnalytics_Sdk_2.2.0.OpenUDID;
+			sourceTree = "<group>";
+		};
+		577C489F17BDEFCD00C7FC56 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				577C48A017BDEFCD00C7FC56 /* CommonDefine.h */,
+				577C48A117BDEFCD00C7FC56 /* UmengManager.h */,
+				577C48A217BDEFCD00C7FC56 /* UmengManager.m */,
+				577C48A317BDEFCD00C7FC56 /* XYFunction.h */,
+				577C48A417BDEFCD00C7FC56 /* XYFunction.m */,
+				577C48A517BDEFCD00C7FC56 /* XYThread.h */,
+				577C48A617BDEFCD00C7FC56 /* XYThread.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		577C48A717BDEFCD00C7FC56 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				577C48A817BDEFCD00C7FC56 /* XYAnimationView.h */,
+				577C48A917BDEFCD00C7FC56 /* XYAnimationView.m */,
+				577C48AA17BDEFCD00C7FC56 /* XYSpriteManager.h */,
+				577C48AB17BDEFCD00C7FC56 /* XYSpriteManager.m */,
+				577C48AC17BDEFCD00C7FC56 /* XYSpriteView.h */,
+				577C48AD17BDEFCD00C7FC56 /* XYSpriteView.m */,
+				577C48AE17BDEFCD00C7FC56 /* XYUI.h */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		577C485717BDEF9900C7FC56 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				577C48B117BDEFCD00C7FC56 /* NSObject+XY.h in Headers */,
+				577C48B317BDEFCD00C7FC56 /* UIView+XY.h in Headers */,
+				577C48B517BDEFCD00C7FC56 /* XYExtension.h in Headers */,
+				577C48B617BDEFCD00C7FC56 /* BlockUI.h in Headers */,
+				577C48B717BDEFCD00C7FC56 /* BUIControl.h in Headers */,
+				577C48B917BDEFCD00C7FC56 /* BUIView.h in Headers */,
+				577C48BB17BDEFCD00C7FC56 /* MBProgressHUD.h in Headers */,
+				577C48BD17BDEFCD00C7FC56 /* RTLabel.h in Headers */,
+				577C48BF17BDEFCD00C7FC56 /* CDAudioManager.h in Headers */,
+				577C48C117BDEFCD00C7FC56 /* CDConfig.h in Headers */,
+				577C48C217BDEFCD00C7FC56 /* CDOpenALSupport.h in Headers */,
+				577C48C417BDEFCD00C7FC56 /* CocosDenshion.h in Headers */,
+				577C48C617BDEFCD00C7FC56 /* SimpleAudioEngine.h in Headers */,
+				577C48C817BDEFCD00C7FC56 /* OpenUDID.h in Headers */,
+				577C48CA17BDEFCD00C7FC56 /* SDDataCacheManager.h in Headers */,
+				577C48CC17BDEFCD00C7FC56 /* SDImageView+SDWebCache.h in Headers */,
+				577C48CE17BDEFCD00C7FC56 /* SDNetworkActivityIndicator.h in Headers */,
+				577C48D017BDEFCD00C7FC56 /* SDWebDataDownloader.h in Headers */,
+				577C48D217BDEFCD00C7FC56 /* SDWebDataManager.h in Headers */,
+				577C48D417BDEFCD00C7FC56 /* SDWebImageCompatibly.h in Headers */,
+				577C48D617BDEFCD00C7FC56 /* MobClick.h in Headers */,
+				577C48D717BDEFCD00C7FC56 /* XYExternal.h in Headers */,
+				577C48D817BDEFCD00C7FC56 /* CommonDefine.h in Headers */,
+				577C48D917BDEFCD00C7FC56 /* UmengManager.h in Headers */,
+				577C48DB17BDEFCD00C7FC56 /* XYFunction.h in Headers */,
+				577C48DD17BDEFCD00C7FC56 /* XYThread.h in Headers */,
+				577C48DF17BDEFCD00C7FC56 /* XYAnimationView.h in Headers */,
+				577C48E117BDEFCD00C7FC56 /* XYSpriteManager.h in Headers */,
+				577C48E317BDEFCD00C7FC56 /* XYSpriteView.h in Headers */,
+				577C48E517BDEFCD00C7FC56 /* XYUI.h in Headers */,
+				577C48E617BDEFCD00C7FC56 /* XYQuickDevelop.h in Headers */,
+				577C48E717BDEFCD00C7FC56 /* XYPrecompile.h in Headers */,
+				577C491A17BDF89200C7FC56 /* libMobClickLibrary.a in Headers */,
+				577C48FD17BDF25500C7FC56 /* NSObject+XY.m in Headers */,
+				577C48FE17BDF25500C7FC56 /* UIView+XY.m in Headers */,
+				577C48FF17BDF25500C7FC56 /* BUIControl.m in Headers */,
+				577C490017BDF25500C7FC56 /* BUIView.m in Headers */,
+				577C490117BDF25500C7FC56 /* MBProgressHUD.m in Headers */,
+				577C490217BDF25500C7FC56 /* RTLabel.m in Headers */,
+				577C490317BDF25500C7FC56 /* CDAudioManager.m in Headers */,
+				577C490417BDF25500C7FC56 /* CDOpenALSupport.m in Headers */,
+				577C490517BDF25500C7FC56 /* CocosDenshion.m in Headers */,
+				577C490617BDF25500C7FC56 /* SimpleAudioEngine.m in Headers */,
+				577C490717BDF25500C7FC56 /* OpenUDID.m in Headers */,
+				577C490817BDF25500C7FC56 /* SDDataCacheManager.m in Headers */,
+				577C490917BDF25500C7FC56 /* SDImageView+SDWebCache.m in Headers */,
+				577C490A17BDF25500C7FC56 /* SDNetworkActivityIndicator.m in Headers */,
+				577C490B17BDF25500C7FC56 /* SDWebDataDownloader.m in Headers */,
+				577C490C17BDF25500C7FC56 /* SDWebDataManager.m in Headers */,
+				577C490E17BDF25500C7FC56 /* UmengManager.m in Headers */,
+				577C490F17BDF25500C7FC56 /* XYFunction.m in Headers */,
+				577C491017BDF25500C7FC56 /* XYThread.m in Headers */,
+				577C48FA17BDF1BA00C7FC56 /* XYAnimationView.m in Headers */,
+				577C48FB17BDF1BA00C7FC56 /* XYSpriteManager.m in Headers */,
+				577C48FC17BDF1BA00C7FC56 /* XYSpriteView.m in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		577C485B17BDEF9900C7FC56 /* XYQuickDevelop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 577C486A17BDEF9900C7FC56 /* Build configuration list for PBXNativeTarget "XYQuickDevelop" */;
+			buildPhases = (
+				577C485417BDEF9900C7FC56 /* ShellScript */,
+				577C485517BDEF9900C7FC56 /* Sources */,
+				577C485617BDEF9900C7FC56 /* Frameworks */,
+				577C485717BDEF9900C7FC56 /* Headers */,
+				577C485817BDEF9900C7FC56 /* Resources */,
+				577C485917BDEF9900C7FC56 /* ShellScript */,
+				577C485A17BDEF9900C7FC56 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XYQuickDevelop;
+			productName = XYQuickDevelop;
+			productReference = 577C485C17BDEF9900C7FC56 /* XYQuickDevelop.framework */;
+			productType = "com.apple.product-type.framework.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		577C485017BDEF9900C7FC56 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = Heaven;
+			};
+			buildConfigurationList = 577C485317BDEF9900C7FC56 /* Build configuration list for PBXProject "XYQuickDevelop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 577C484F17BDEF9900C7FC56;
+			productRefGroup = 577C485D17BDEF9900C7FC56 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				577C485B17BDEF9900C7FC56 /* XYQuickDevelop */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		577C485817BDEF9900C7FC56 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				577C486617BDEF9900C7FC56 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		577C485417BDEF9900C7FC56 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n    # Nothing for the slave script to do\n    exit 0\nfi\nset -u\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    UFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n\tUFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version  from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    UFW_OTHER_PLATFORM=iphonesimulator\nelse\n    UFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\n    UFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\nONLY_ACTIVE_PLATFORM=${ONLY_ACTIVE_PLATFORM:-$ONLY_ACTIVE_ARCH}\n\n# Short-circuit if all binaries are up to date\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && \\\n   [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && \\\n   [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && \\\n  ([[ \"${ONLY_ACTIVE_PLATFORM}\" == \"YES\" ]] || \\\n    ([[ -f \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && \\\n     [[ -f \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && \\\n     [[ ! \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\n    )\n  )\nthen\n    exit 0\nfi\n\n\n# Clean other platform if needed\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && [[ \"${ONLY_ACTIVE_PLATFORM}\" != \"YES\" ]]\nthen\n\techo \"Platform \\\"$UFW_SDK_PLATFORM\\\" was cleaned recently. Cleaning \\\"$UFW_OTHER_PLATFORM\\\" as well\"\n\techo xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" clean\n\txcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" clean\nfi\n\n\n# Make sure we are building from fresh binaries\n\nrm -rf \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\n\nif [[ \"${ONLY_ACTIVE_PLATFORM}\" != \"YES\" ]]\nthen\n    rm -rf \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n    rm -rf \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nfi\n";
+		};
+		577C485917BDEF9900C7FC56 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "HEADERS_ROOT=$SRCROOT/$PRODUCT_NAME\nFRAMEWORK_HEADERS_DIR=\"$BUILT_PRODUCTS_DIR/$WRAPPER_NAME/Versions/$FRAMEWORK_VERSION/Headers\"\n\n## only header files expected at this point\nPUBLIC_HEADERS=$(find $FRAMEWORK_HEADERS_DIR/. -not -type d 2> /dev/null | sed -e \"s@.*/@@g\")\n\nFIND_OPTS=\"\"\nfor PUBLIC_HEADER in $PUBLIC_HEADERS; do\n  if [ -n \"$FIND_OPTS\" ]; then\n    FIND_OPTS=\"$FIND_OPTS -o\"\n  fi\n  FIND_OPTS=\"$FIND_OPTS -name '$PUBLIC_HEADER'\"\ndone\n\nif [ -n \"$FIND_OPTS\" ]; then\n  for ORIG_HEADER in $(eval \"find $HEADERS_ROOT/. $FIND_OPTS\" 2> /dev/null | sed -e \"s@^$HEADERS_ROOT/./@@g\"); do\n    PUBLIC_HEADER=$(basename $ORIG_HEADER)\n    RELATIVE_PATH=$(dirname $ORIG_HEADER)\n    if [ -e $FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER ]; then\n      mkdir -p \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH\"\n      mv \"$FRAMEWORK_HEADERS_DIR/$PUBLIC_HEADER\" \"$FRAMEWORK_HEADERS_DIR/$RELATIVE_PATH/$PUBLIC_HEADER\"\n    fi\n  done\nfi\n";
+		};
+		577C485A17BDEF9900C7FC56 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n    # Nothing for the slave script to do\n    exit 0\nfi\nset -u\nexport UFW_MASTER_SCRIPT_RUNNING=1\n\n\n# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n        eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n\n# Sanity check\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]]\nthen\n    echo \"Framework target \\\"${TARGET_NAME}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\n    exit 1\nfi\n\n\n# Gather information\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    UFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    UFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    UFW_OTHER_PLATFORM=iphonesimulator\nelse\n    UFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\n    UFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\nONLY_ACTIVE_PLATFORM=${ONLY_ACTIVE_PLATFORM:-$ONLY_ACTIVE_ARCH}\n\n# Short-circuit if all binaries are up to date.\n# We already checked the other platform in the prerun script.\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\nthen\n    exit 0\nfi\n\nif [ \"${ONLY_ACTIVE_PLATFORM}\" == \"YES\" ]\nthen\n    echo \"ONLY_ACTIVE_PLATFORM=${ONLY_ACTIVE_PLATFORM}: Skipping other platform build\"\nelse\n    # Make sure the other platform gets built\n    \n    echo \"Build other platform\"\n    \n    echo xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\n    xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\n    \n    \n    # Build the fat static library binary\n    \n    echo \"Create universal static library\"\n    \nif [[ \"$XCODE_VERSION_MAJOR\" = \"0500\" ]]\nthen\n    echo \"$DT_TOOLCHAIN_DIR/usr/bin/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n    \"$DT_TOOLCHAIN_DIR/usr/bin/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\nelse\n    echo \"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n    \"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\nfi \n    echo mv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n    mv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nfi\n\n# Build embedded framework structure\n\necho \"Build Embedded Framework\"\n\necho rm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\necho mkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\necho cp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\ncp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\n    if [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\n    then\n        echo ln -sfh \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n        ln -sfh \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n    fi\ndone\n\n\nif [ \"${ONLY_ACTIVE_PLATFORM}\" != \"YES\" ]\nthen\n    # Replace other platform's framework with a copy of this one (so that both have the same universal binary)\n    \n    echo \"Copy from $UFW_SDK_PLATFORM to $UFW_OTHER_PLATFORM\"\n    \n    echo rm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\n    rm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\n    echo cp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\n    cp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		577C485517BDEF9900C7FC56 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				577C48B217BDEFCD00C7FC56 /* NSObject+XY.m in Sources */,
+				577C48B417BDEFCD00C7FC56 /* UIView+XY.m in Sources */,
+				577C48B817BDEFCD00C7FC56 /* BUIControl.m in Sources */,
+				577C48BA17BDEFCD00C7FC56 /* BUIView.m in Sources */,
+				577C48BC17BDEFCD00C7FC56 /* MBProgressHUD.m in Sources */,
+				577C48BE17BDEFCD00C7FC56 /* RTLabel.m in Sources */,
+				577C48C017BDEFCD00C7FC56 /* CDAudioManager.m in Sources */,
+				577C48C317BDEFCD00C7FC56 /* CDOpenALSupport.m in Sources */,
+				577C48C517BDEFCD00C7FC56 /* CocosDenshion.m in Sources */,
+				577C48C717BDEFCD00C7FC56 /* SimpleAudioEngine.m in Sources */,
+				577C48C917BDEFCD00C7FC56 /* OpenUDID.m in Sources */,
+				577C48CB17BDEFCD00C7FC56 /* SDDataCacheManager.m in Sources */,
+				577C48CD17BDEFCD00C7FC56 /* SDImageView+SDWebCache.m in Sources */,
+				577C48CF17BDEFCD00C7FC56 /* SDNetworkActivityIndicator.m in Sources */,
+				577C48D117BDEFCD00C7FC56 /* SDWebDataDownloader.m in Sources */,
+				577C48D317BDEFCD00C7FC56 /* SDWebDataManager.m in Sources */,
+				577C48DA17BDEFCD00C7FC56 /* UmengManager.m in Sources */,
+				577C48DC17BDEFCD00C7FC56 /* XYFunction.m in Sources */,
+				577C48DE17BDEFCD00C7FC56 /* XYThread.m in Sources */,
+				577C48E017BDEFCD00C7FC56 /* XYAnimationView.m in Sources */,
+				577C48E217BDEFCD00C7FC56 /* XYSpriteManager.m in Sources */,
+				577C48E417BDEFCD00C7FC56 /* XYSpriteView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		577C486417BDEF9900C7FC56 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				577C486517BDEF9900C7FC56 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		577C486817BDEF9900C7FC56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		577C486917BDEF9900C7FC56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		577C486B17BDEF9900C7FC56 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XYQuickDevelop/XYQuickDevelop-Prefix.pch";
+				INFOPLIST_FILE = "XYQuickDevelop/XYQuickDevelop-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/XYQuickDevelop/External/Utilities/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		577C486C17BDEF9900C7FC56 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					armv6,
+					"$(ARCHS_STANDARD_32_BIT)",
+				);
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SYSTEM_APPS_DIR)/Xcode.app/Contents/Developer/Library/Frameworks\"",
+				);
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "XYQuickDevelop/XYQuickDevelop-Prefix.pch";
+				INFOPLIST_FILE = "XYQuickDevelop/XYQuickDevelop-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/XYQuickDevelop/External/Utilities/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		577C485317BDEF9900C7FC56 /* Build configuration list for PBXProject "XYQuickDevelop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				577C486817BDEF9900C7FC56 /* Debug */,
+				577C486917BDEF9900C7FC56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		577C486A17BDEF9900C7FC56 /* Build configuration list for PBXNativeTarget "XYQuickDevelop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				577C486B17BDEF9900C7FC56 /* Debug */,
+				577C486C17BDEF9900C7FC56 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 577C485017BDEF9900C7FC56 /* Project object */;
+}

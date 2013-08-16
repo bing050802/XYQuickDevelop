@@ -7,7 +7,7 @@
 //
 
 #import "TestView.h"
-#import "XYCommon.h"
+
 @implementation TestView
 
 - (id)initWithFrame:(CGRect)frame

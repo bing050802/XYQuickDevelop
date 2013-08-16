@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "XYCommon.h"
 #import "TestView.h"
 #import "Test2View.h"
 
@@ -78,9 +77,6 @@
     
     [[XYSpriteManager sharedInstance] startTimer];
     [[XYSpriteManager sharedInstance] startAllSprites];
-    
-    RedView *aView = [[RedView alloc] initWithFrame: CGRectMake(600, 300, 100, 110)];
-    [self.view addSubview:aView];
     
 }
 

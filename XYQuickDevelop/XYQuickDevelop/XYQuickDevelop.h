@@ -6,6 +6,8 @@
 //  Copyright (c) 2012年 Heaven. All rights reserved.
 //
 
+#define MAKE_CATEGORIES_LOADABLE(UNIQUE_NAME) @interface FORCELOAD_##UNIQUE_NAME @end @implementation FORCELOAD_##UNIQUE_NAME @end
+
 #import "XYPrecompile.h"
 #import "XYFunction.h"
 #import "XYThread.h"

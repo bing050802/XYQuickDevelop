@@ -6,7 +6,7 @@
 //
 //
 
-#import "XYCommon.h"
+#import "XYQuickDevelop.h"
 #import <Social/Social.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CommonCrypto/CommonDigest.h>
