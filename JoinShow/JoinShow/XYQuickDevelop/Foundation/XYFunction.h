@@ -6,34 +6,42 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-#import <mach/mach.h>
-#import <mach/mach_host.h>
-
 #import "XYPrecompile.h"
 
-// 第三方支持
-#if defined (__USED_FMDatabase____) && __USED_FMDatabase__
-#import "FMDatabase.h"
-#endif
-
-#if defined (__USED_MBProgressHUD__) && __USED_MBProgressHUD__
-#import "MBProgressHUD.h"
-#endif
 @class MBProgressHUD;
-
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
-#import "ASIHTTPRequest.h"
-#endif
 @class ASIHTTPRequest;
 
+
+/****************************************************************/
+/** 移魂大法
+ * api parameters 说明
+ * c 类
+ * original 原方法
+ * replacement 劫持后的方法
+ */
+static void XY_swizzleInstanceMethod(Class c, SEL original, SEL replacement) {
+    Method a = class_getInstanceMethod(c, original);
+    Method b = class_getInstanceMethod(c, replacement);
+    if (class_addMethod(c, original, method_getImplementation(b), method_getTypeEncoding(b)))
+    {
+        class_replaceMethod(c, replacement, method_getImplementation(a), method_getTypeEncoding(a));
+    }
+    else
+    {
+        method_exchangeImplementations(a, b);
+    }
+}
+
+/********************************           Common          *****************/
 @interface Common : NSObject{
-    
+ 
 }
 /***************************************************************/
-#define kCommon_dataFilePath_documents 1
-#define kCommon_dataFilePath_tmp 2
-#define kCommon_dataFilePath_app 3
+typedef enum {
+    filePathOption_documents = 1,
+    filePathOption_tmp,
+    filePathOption_app,
+} FilePathOption;
 // 返回文件路径的方法
 /*
  * api parameters 说明
@@ -41,7 +49,7 @@
  * file 文件名
  * kType 文件所在目录类型. kCommon_dataFilePath_documents documents文件夹里,kCommon_dataFilePath_tmp Tmp文件夹里,kCommon_dataFilePath_app app文件夹里.
  */
-+ (NSString *) dataFilePath:(NSString *)file ofType:(int)kType;
++ (NSString *) dataFilePath:(NSString *)file ofType:(FilePathOption)kType;
 
 /***************************************************************/
 // Unicode格式的字符串编码转成中文的方法(如\u7E8C)转换成中文,unicode编码以\u开头
@@ -53,9 +61,11 @@
 + (NSString *) replaceUnicode:(NSString *)unicodeStr;
 
 /***************************************************************/
-#define kCommon_rangeOfString_middle 1
-#define kCommon_rangeOfString_front  2
-#define kCommon_rangeOfString_back   3
+typedef enum {
+    markOption_middle = 1,
+    markOption_front,
+    markOption_back,
+} MarkOption;
 // 返回字符串的位置的方法
 /* rangeOfString:返回range. rangeArrayOfString:返回range数组
  * api parameters 说明
@@ -65,13 +75,13 @@
  * strMark 需要查找的字符串的标记
  * strStart 起始标记
  * strEnd 结束标记
- * operation 模式. kCommon_rangeOfString_middle mark在Start和end中间,当Start=mark时,返回 Start和end中间的Range
- *                kCommon_rangeOfString_front: mark在Start和end前面   kCommon_rangeOfString_back: mark在Start和end后面
+ * operation 模式. markOption_middle mark在Start和end中间,当Start=mark时,返回 Start和end中间的Range
+ *                markOption_front: mark在Start和end前面   markOption_back: mark在Start和end后面
  * block 每一个字符串都执行该block
  */
-+(NSRange) rangeOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation;
-+(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation;
-+(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation everyStringExecuteBlock:(void(^)(NSRange rangeEvery))block;
++(NSRange) rangeOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(MarkOption)operation;
++(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(MarkOption)operation;
++(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(MarkOption)operation everyStringExecuteBlock:(void(^)(NSRange rangeEvery))block;
 /***************************************************************/
 #define kLastLocation -1
 // 返回没有属性的xml中指定节点的值的方法
@@ -169,7 +179,7 @@
 +(void) openURL:(NSURL *)url;
 
 /****************************************************************/
-#if defined (__USED_FMDatabase____) && __USED_FMDatabase__
+#if (1 == __USED_FMDatabase__)
 /** 更新表结构
  * api parameters 说明
  * tableName 表明, dbPath 数据库路径, aObject 实体对象
@@ -184,7 +194,7 @@
 + (UIViewController *) getCurrentViewController;
 
 /****************************************************************/
-#if defined (__USED_MBProgressHUD__) && __USED_MBProgressHUD__
+#if (1 == __USED_MBProgressHUD__)
 /** 显示MBProgressHUD指示器
  * api parameters 说明
  * aTitle 标题
@@ -233,7 +243,7 @@
  */
 +(NSString *) getLocalHost;
 /****************************************************************/
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
+#if (1 ==  __USED_ASIHTTPRequest__)
 /** 开启一个异步请求
  * api parameters 说明
  * url
@@ -261,7 +271,7 @@
  */
 //+(UIView *) setBackgroundViewHidden:(BOOL)b;
 /****************************************************************/
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
+#if (1 ==  __USED_ASIHTTPRequest__)
 /** 检查软件更新
  * api parameters 说明
  * appID 应用程序ID
@@ -274,11 +284,11 @@
 // 有提示框弹出
 +(void) checkUpdateInAppStore:(NSString *)appID curVersion:(NSString *)aVersion appURLString:(NSString *)strURL
                          same:(void(^)(void))blockSame
-                    stayStill:(void(^)(void))blockstayStill;
+                    stayStill:(void(^)(void))blockStayStill;
 // 需要自己处理弹出对话框
 +(void) checkUpdateInAppStore:(NSString *)appID curVersion:(NSString *)aVersion
                          same:(void(^)(void))blockSame
-                   localIsOld:(void(^)(NSString *appStoreVersion))blocklocalIsOld;
+                   localIsOld:(void(^)(NSString *appStoreVersion))blockLocalIsOld;
 #endif
 /****************************************************************/
 /** 版本号比大小
@@ -288,9 +298,17 @@
  */
 +(BOOL) compareVersionFromOldVersion:(NSString *)oldVersion newVersion:(NSString *)newVersion;
 /****************************************************************/
+#pragma mark - to do
 /** objc to dictionary
  * api parameters 说明
  * aObject 对象
  */
 +(NSMutableDictionary *) dictionaryOfObject:(id)aObject;
+
+/****************************************************************/
+/** 创建目录
+ * api parameters 说明
+ * aPath 目录路径
+ */
++(void) createDirectoryAtPath:(NSString *)aPath;
 @end

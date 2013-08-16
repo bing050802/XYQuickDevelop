@@ -11,8 +11,8 @@
 @interface UIView (XY)
 
 -(void) addTapGestureWithTarget:(id)target action:(SEL)action;
--(void) removeTapGesture;
-#pragma mark - todo
 -(void) addTapGestureWithBlock:(void(^)(void))aBlock;
+
+-(void) removeTapGesture;
 
 @end

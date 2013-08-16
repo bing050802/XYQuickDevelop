@@ -8,7 +8,6 @@
 
 #import "XYCommon.h"
 #import <Social/Social.h>
-#import <objc/runtime.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <ifaddrs.h>
@@ -20,10 +19,10 @@
     
 }
 /***************************************************************/
-+ (NSString *)dataFilePath:(NSString *)file ofType:(int)kType{
++ (NSString *) dataFilePath:(NSString *)file ofType:(FilePathOption)kType{
     NSString *pathFile = nil;
     switch (kType) {
-        case kCommon_dataFilePath_documents:
+        case filePathOption_documents:
         {
             // NSDocumentDirectory代表查找Documents路径,NSUserDomainMask代表在应用程序沙盒下找
             NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -32,14 +31,14 @@
             pathFile = [documentsDirectory stringByAppendingPathComponent:file];
             break;
         }
-        case kCommon_dataFilePath_tmp:
+        case filePathOption_tmp:
         {
             NSString *str = NSTemporaryDirectory();
             //    NSLog(@"%@", str);
             pathFile = [str stringByAppendingPathComponent:file];
             break;
         }
-        case kCommon_dataFilePath_app:
+        case filePathOption_app:
         {
             // 获得文件名
             NSString *str =[file stringByDeletingPathExtension];
@@ -55,7 +54,7 @@
 }
 
 /***************************************************************/
-+ (NSString *)replaceUnicode:(NSString *)unicodeStr
++(NSString *) replaceUnicode:(NSString *)unicodeStr
 {
     NSString *tempStr1 = [unicodeStr stringByReplacingOccurrencesOfString:@"\\u" withString:@"\\U"];
     NSString *tempStr2 = [tempStr1 stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
@@ -70,7 +69,7 @@
 }
 
 /***************************************************************/
-+ (NSRange)rangeOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation;
++(NSRange) rangeOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(MarkOption)operation;
 {
     int option = 0;
     NSRange rangeMark = {0, 0};
@@ -82,17 +81,17 @@
     rangeMark = [str rangeOfString:strMark options:NSLiteralSearch range:rangeMark];
     if(rangeMark.length == 0) return rangeMark;
     switch (operation) {
-        case kCommon_rangeOfString_middle:
+        case markOption_middle:
             rangeMarkA.location = iStart;
             rangeMarkA.length = rangeMark.location + rangeMark.length - iStart;
             option = NSBackwardsSearch;
             break;
-        case kCommon_rangeOfString_front:
+        case markOption_front:
             rangeMarkA.location = rangeMark.location;
             rangeMarkA.length = str.length - rangeMark.location;
             option = NSLiteralSearch;
             break;
-        case kCommon_rangeOfString_back:
+        case markOption_back:
             rangeMarkA.location = iStart;
             rangeMarkA.length = rangeMark.location + rangeMark.length - iStart;
             option = NSBackwardsSearch;
@@ -104,15 +103,15 @@
     
     NSRange rangeMarkB = NSMakeRange(0, 0);
     switch (operation) {
-        case kCommon_rangeOfString_middle:
+        case markOption_middle:
             rangeMarkB.length = str.length - rangeMark.location;
             rangeMarkB.location = rangeMark.location;
             break;
-        case kCommon_rangeOfString_front:
+        case markOption_front:
             rangeMarkB.length = str.length - rangeMarkA.location - rangeMarkA.length;
             rangeMarkB.location = rangeMarkA.location + rangeMarkA.length;
             break;
-        case kCommon_rangeOfString_back:
+        case markOption_back:
             rangeMarkB.length = rangeMark.location - rangeMarkA.location -rangeMarkA.length;
             rangeMarkB.location = rangeMarkA.location + rangeMarkA.length;
         default:
@@ -128,16 +127,16 @@
     return rangeTmp;
 }
 
-+ (NSRange)rangeOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd operation:(int)operation;
++(NSRange) rangeOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd operation:(int)operation;
 {
     // NSString *strMark = nil;
     NSRange rangeMark;
     return rangeMark;
 }
-+ (NSMutableArray *)rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation{
++(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(MarkOption)operation{
     return [Common rangeArrayOfString:str pointStart:iStart start:strStart end:strEnd mark:strMark operation:operation everyStringExecuteBlock:nil];
 }
-+(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(int)operation everyStringExecuteBlock:(void(^)(NSRange rangeEvery))block{
++(NSMutableArray *) rangeArrayOfString:(NSString *)str pointStart:(int)iStart start:(NSString *)strStart end:(NSString *)strEnd mark:(NSString *)strMark operation:(MarkOption)operation everyStringExecuteBlock:(void(^)(NSRange rangeEvery))block{
     NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
     int i = 0;
     while (i != -1) {
@@ -154,7 +153,7 @@
     return array;
 }
 /***************************************************************/
-+(NSString *)getValueInANonAttributeXMLNode:(NSString *)str key:(NSString *)akey location:(int)location{
++(NSString *) getValueInANonAttributeXMLNode:(NSString *)str key:(NSString *)akey location:(int)location{
     NSString *str1 = [NSString stringWithFormat:@"<%@>", akey];
     NSString *str2 = [NSString stringWithFormat:@"</%@>", akey];
     static int i = 0;
@@ -163,11 +162,11 @@
         if (i> (str.length - akey.length*2)) i = 0;
     }else i = location;
     
-    NSRange range = [Common rangeOfString:str pointStart:i start:str1 end:str2 mark:str1 operation:kCommon_rangeOfString_middle];
+    NSRange range = [Common rangeOfString:str pointStart:i start:str1 end:str2 mark:str1 operation:markOption_middle];
 #pragma mark- 待优化
     if (0 == range.length) {
         i = 0;
-        range = [Common rangeOfString:str pointStart:i start:str1 end:str2 mark:str1 operation:kCommon_rangeOfString_middle];
+        range = [Common rangeOfString:str pointStart:i start:str1 end:str2 mark:str1 operation:markOption_middle];
     }
     
     if (0 == range.length) return nil;
@@ -184,13 +183,13 @@
 }
 /***************************************************************/
 // Recursively travel down the view tree, increasing the indentation level for children
-+ (void) dumpView: (UIView *) aView atIndent: (int) indent into:(NSMutableString *) outstring{
++(void) dumpView: (UIView *) aView atIndent: (int) indent into:(NSMutableString *) outstring{
     for (int i = 0; i < indent; i++) [outstring appendString:@"--"];
 	[outstring appendFormat:@"[%2d] %@\n", indent, [[aView class] description]];
 	for (UIView *view in [aView subviews]) [self dumpView:view atIndent:indent + 1 into:outstring];
 }
 // Start the tree recursion at level 0 with the root view
-+ (NSString *) displayViews: (UIView *) aView
++(NSString *) displayViews: (UIView *) aView
 {
 	NSMutableString *outstring = [[NSMutableString alloc] init];
 	[self dumpView:aView atIndent:0 into:outstring];
@@ -198,7 +197,7 @@
 }
 
 /***************************************************************/
-+ (NSMutableArray *)analyseString:(NSString *)str regularExpression:(NSString *)regexStr{
++(NSMutableArray *) analyseString:(NSString *)str regularExpression:(NSString *)regexStr{
     NSMutableArray *arrayA = [self analyseStringToRange:str regularExpression:regexStr];
     NSMutableArray *arrayStr = [[[NSMutableArray alloc] init] autorelease];
     
@@ -211,7 +210,7 @@
     
     return arrayStr;
 }
-+ (NSMutableArray *)analyseStringToRange:(NSString *)str regularExpression:(NSString *)regexStr{
++(NSMutableArray *) analyseStringToRange:(NSString *)str regularExpression:(NSString *)regexStr{
     NSMutableArray *arrayA = [[[NSMutableArray alloc] init] autorelease];
     
     //NSRegularExpression类里面调用表达的方法需要传递一个NSError的参数。下面定义一个
@@ -237,7 +236,7 @@
 }
 
 /***************************************************************/
-+ (NSMutableArray *)allFilesAtPath:(NSString *)direString type:(NSString*)fileType operation:(int)operatio{
++(NSMutableArray *) allFilesAtPath:(NSString *)direString type:(NSString*)fileType operation:(int)operatio{
     NSMutableArray *pathArray = [NSMutableArray array];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -272,7 +271,7 @@
 }
 
 /***************************************************************/
-+(void)shareToTwitterWithStr:(NSString *)strText withPicPath:(NSString *)picPath withURL:(NSString*)strURL inController:(id)vc{
++(void) shareToTwitterWithStr:(NSString *)strText withPicPath:(NSString *)picPath withURL:(NSString*)strURL inController:(id)vc{
     /* 本项目屏蔽
      if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter])
      {
@@ -306,7 +305,7 @@
     [alertview release];
 }
 /***************************************************************/
-+(NSArray *)getPropertyListClass:(id)aObject{
++(NSArray *) getPropertyListClass:(id)aObject{
     NSUInteger			propertyCount = 0;
     objc_property_t *	properties = class_copyPropertyList( [aObject class], &propertyCount );
     NSMutableArray *    array = [[[NSMutableArray alloc] init] autorelease];
@@ -323,7 +322,7 @@
     return array;
 }
 /***************************************************************/
-+(void)activityShow:(BOOL)b{
++(void) activityShow:(BOOL)b{
     //   static UIView *bgView;
     static UIActivityIndicatorView *aView = nil;
     if (aView == nil) {
@@ -347,27 +346,7 @@
     
 }
 /***************************************************************/
-/*
- +(void)playSoundWihtPath:(NSString *)audioPath
- {
- if (audioPath) {
- NSURL *soundUrl = [[NSURL alloc] initFileURLWithPath:audioPath];
- NSError *error = [[NSError alloc] init];
- AVAudioPlayer *audio = [[[AVAudioPlayer alloc] initWithContentsOfURL:soundUrl error:&error] autorelease];
- // NSLogD(@"%s, %@", __FUNCTION__, error);
- [error release];
- // [data release];
- [soundUrl release];
- audio.numberOfLoops = 0;
- // audio.delegate = self;
- // [audio setVolume:1];
- [audio prepareToPlay];
- [audio play];
- }
- }
- */
-/***************************************************************/
-+(NSString *)sha1:(NSString*)str{
++(NSString *) sha1:(NSString*)str{
     const char *cstr = [str cStringUsingEncoding:NSUTF8StringEncoding];
     NSData *data = [NSData dataWithBytes:cstr length:str.length];
     
@@ -383,16 +362,17 @@
     return output;
 }
 /***************************************************************/
-+(void)openURL:(NSURL *)url{
++(void) openURL:(NSURL *)url{
     NSURL *tmpURL = url;
     if ([url isKindOfClass:[NSString class]]) {
         tmpURL = [NSURL URLWithString:url];
     }
     [[UIApplication sharedApplication ] openURL:tmpURL];
 }
-#if defined (__USED_FMDatabase____) && __USED_FMDatabase__
+
 /***************************************************************/
-+ (BOOL)updateTable:(NSString *)tableName dbPath:(NSString *)dbPath object:(id)aObject{
+#if (1 == __USED_FMDatabase__)
++(BOOL) updateTable:(NSString *)tableName dbPath:(NSString *)dbPath object:(id)aObject{
     // NSString *path = [Common dataFilePath:@"/BeeDatabase/TWP_SkyBookShelf.db" ofType:kCommon_dataFilePath_documents];
     FMDatabase *db = [FMDatabase databaseWithPath:dbPath];
     [db open];
@@ -447,7 +427,7 @@
 }
 #endif
 /***************************************************************/
-+ (UIViewController *)getCurrentViewController {
++(UIViewController *) getCurrentViewController {
     UIViewController *result;
     // Try to find the root view controller programmically
     // Find the top window (that is not an alert view or other window)
@@ -474,9 +454,10 @@
     
     return result;
 }
-#if defined (__USED_MBProgressHUD__) && __USED_MBProgressHUD__
+
 /***************************************************************/
-+(void)showMBProgressHUDTitle:(NSString *)aTitle msg:(NSString *)aMsg image:(UIImage *)aImg dimBG:(BOOL)dimBG delay:(float)d{
+#if (1 == __USED_MBProgressHUD__)
++(void) showMBProgressHUDTitle:(NSString *)aTitle msg:(NSString *)aMsg image:(UIImage *)aImg dimBG:(BOOL)dimBG delay:(float)d{
     UIViewController *vc = [self getCurrentViewController];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:vc.view animated:YES];
     
@@ -514,7 +495,7 @@
 }
 #endif
 /***************************************************************/
-+ (NSString *)getStringFromDate:(NSDate *)date
++(NSString *) getStringFromDate:(NSDate *)date
 {
     NSDateFormatter*formatter = [[NSDateFormatter alloc] init];
     //    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -525,7 +506,7 @@
     return dateTimeString;
 }
 /***************************************************************/
-+ (NSDate *)getDateFromString:(NSString *)string
++(NSDate *) getDateFromString:(NSString *)string
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -534,12 +515,12 @@
     return date;
 }
 /***************************************************************/
-+ (NSString *)StringForSQL:(NSString *)str
++(NSString *) StringForSQL:(NSString *)str
 {
     return [str stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
 }
 /***************************************************************/
-+ (NSString *)getLocalHost{
++(NSString *) getLocalHost{
     NSString *address = @"error";
     struct ifaddrs *interfaces = NULL;
     struct ifaddrs *temp_addr = NULL;
@@ -564,8 +545,9 @@
     freeifaddrs(interfaces);
     return address;
 }
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
+
 /***************************************************************/
+#if (1 ==  __USED_ASIHTTPRequest__)
 +(ASIHTTPRequest *) startAsynchronousRequestWithURLString:(NSString *)str
                                                   succeed:(void (^)(ASIHTTPRequest *request))blockS
                                                    failed:(void (^)(NSError *error))blockF{
@@ -656,10 +638,10 @@
  */
 
 /***************************************************************/
-#if defined (__USED_ASIHTTPRequest__) && __USED_ASIHTTPRequest__
+#if (1 ==  __USED_ASIHTTPRequest__)
 +(void) checkUpdateInAppStore:(NSString *)appID curVersion:(NSString *)aVersion appURLString:(NSString *)strURL
                          same:(void(^)(void))blockSame
-                    stayStill:(void(^)(void))blockstayStill{
+                    stayStill:(void(^)(void))blockStayStill{
     [self checkUpdateInAppStore:appID curVersion:aVersion
                            same:blockSame localIsOld:^(NSString *appStoreVersion) {
                                NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
@@ -684,7 +666,7 @@
 }
 +(void) checkUpdateInAppStore:(NSString *)appID curVersion:(NSString *)aVersion
                          same:(void(^)(void))blockSame
-                   localIsOld:(void(^)(NSString *appStoreVersion))blocklocalIsOld{
+                   localIsOld:(void(^)(NSString *appStoreVersion))blockLocalIsOld{
     NSURL *appleLink = [NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@", appID]];
     __block ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:appleLink];
     [request addRequestHeader:@"Content-Type" value:@"application/json"];
@@ -693,7 +675,7 @@
         NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
         NSString *str = [[NSString alloc] initWithData:[request responseData] encoding:NSUTF8StringEncoding];
         
-        NSRange range = [self rangeOfString:str pointStart:0 start:@":\"" end:@"\"," mark:@"\"version\"" operation:kCommon_rangeOfString_front];
+        NSRange range = [self rangeOfString:str pointStart:0 start:@":\"" end:@"\"," mark:@"\"version\"" operation:markOption_front];
         NSString *versionAppStore = [str substringWithRange:NSMakeRange(range.location + 2, range.length -4)];
         NSString *localVersion;
         if (aVersion == nil) {
@@ -742,6 +724,16 @@
     }
 }
 /***************************************************************/
-
++(void) createDirectoryAtPath:(NSString *)aPath{
+    if ( NO == [[NSFileManager defaultManager] fileExistsAtPath:aPath isDirectory:NULL] )
+    {
+        BOOL ret = [[NSFileManager defaultManager] createDirectoryAtPath:aPath
+                                             withIntermediateDirectories:YES
+                                                              attributes:nil
+                                                                   error:nil];
+        if ( NO == ret )
+            return;
+    }
+}
 @end
 

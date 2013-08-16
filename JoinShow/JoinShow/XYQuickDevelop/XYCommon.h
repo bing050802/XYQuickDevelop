@@ -6,10 +6,13 @@
 //  Copyright (c) 2012年 Heaven. All rights reserved.
 //
 
-//#import "XYCommon.h"
-
 #import "XYPrecompile.h"
 #import "XYFunction.h"
 #import "XYThread.h"
 
-#import "UIView+XY.h"
+#import "XYExtension.h"
+#import "XYExternal.h"
+
+#import "XYUI.h"
+
+#import "UmengManager.h"

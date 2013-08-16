@@ -7,12 +7,25 @@
 //
 
 #import "UIView+XY.h"
+#import "XYExtension.h"
 #import <objc/runtime.h>
 
 @implementation UIView (XY)
 
-//const char oldDelegateKey;
-const char completionHandlerKey;
+#undef	UIView_key_tapBlock
+#define UIView_key_tapBlock	"TapBlock"
+
+
+-(void) UIView_dealloc{
+    objc_removeAssociatedObjects(self);
+    XY_swizzleInstanceMethod([self class], @selector(UIView_dealloc), @selector(dealloc));
+	[self dealloc];
+}
+
+/*
++ (void)initialize{
+}
+ */
 
 -(void) addTapGestureWithTarget:(id)target action:(SEL)action{
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:target action:action];
@@ -20,26 +33,9 @@ const char completionHandlerKey;
     [tap release];
 }
 -(void) removeTapGesture{
-    /*
-    NSArray *array = self.gestureRecognizers;
-    NSMutableArray *tmpArray = [[NSMutableArray alloc] initWithCapacity:2];
-    
-    for (UIGestureRecognizer *ges in array) {
-        if ([ges isKindOfClass:[UITapGestureRecognizer class]]) {
-            [tmpArray addObject:ges];
-        }
-    }
-    
-    for (UIGestureRecognizer *ges in tmpArray) {
-        [self removeGestureRecognizer:ges];
-    }
-    
-    [tmpArray release];
-    */
-    
-    for ( UIGestureRecognizer * gesture in self.gestureRecognizers )
+    for (UIGestureRecognizer * gesture in self.gestureRecognizers)
 	{
-		if ( [gesture isKindOfClass:[UITapGestureRecognizer class]] )
+		if ([gesture isKindOfClass:[UITapGestureRecognizer class]])
 		{
 			[self removeGestureRecognizer:gesture];
 		}
@@ -51,14 +47,12 @@ const char completionHandlerKey;
     [self addGestureRecognizer:tap];
     [tap release];
     
-    objc_setAssociatedObject(self, &completionHandlerKey, aBlock, OBJC_ASSOCIATION_COPY);
+    objc_setAssociatedObject(self, UIView_key_tapBlock, aBlock, OBJC_ASSOCIATION_COPY);
+    XY_swizzleInstanceMethod([self class], @selector(dealloc), @selector(UIView_dealloc));
 }
 -(void)actionTap{
-    void (^aBlock)(void) = objc_getAssociatedObject(self, &completionHandlerKey);
+    void (^aBlock)(void) = objc_getAssociatedObject(self, UIView_key_tapBlock);
     
-    if ( aBlock )
-    {
-        aBlock();
-    }
+    if (aBlock) aBlock();
 }
 @end

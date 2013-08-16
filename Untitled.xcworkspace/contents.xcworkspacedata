@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:XYQuickDevelop/XYQuickDevelop.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:JoinShow/JoinShow.xcodeproj">
    </FileRef>
 </Workspace>

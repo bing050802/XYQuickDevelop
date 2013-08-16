@@ -45,9 +45,24 @@
 @implementation RTLabelButton
 @end
 
+
+@interface RTLabelComponent : NSObject
+@property (nonatomic, assign) int componentIndex;
+@property (nonatomic, copy) NSString *text;
+@property (nonatomic, copy) NSString *tagLabel;
+@property (nonatomic) NSMutableDictionary *attributes;
+@property (nonatomic, assign) int position;
+
+- (id)initWithString:(NSString*)aText tag:(NSString*)aTagLabel attributes:(NSMutableDictionary*)theAttributes;
++ (id)componentWithString:(NSString*)aText tag:(NSString*)aTagLabel attributes:(NSMutableDictionary*)theAttributes;
+- (id)initWithTag:(NSString*)aTagLabel position:(int)_position attributes:(NSMutableDictionary*)_attributes;
++ (id)componentWithTag:(NSString*)aTagLabel position:(int)aPosition attributes:(NSMutableDictionary*)theAttributes;
+
+@end
+
 @implementation RTLabelComponent
 
-- (id)initWithString:(NSString*)aText tag:(NSString*)aTagLabel attributes:(NSMutableDictionary*)theAttributes
+- (id)initWithString:(NSString*)aText tag:(NSString*)aTagLabel attributes:(NSMutableDictionary*)theAttributes;
 {
     self = [super init];
 	if (self) {
@@ -127,41 +142,24 @@
 
 @implementation RTLabel
 
-- (id)initWithFrame:(CGRect)_frame
-{
+- (id)initWithFrame:(CGRect)_frame {
+    
     self = [super initWithFrame:_frame];
-    if (self)
-	{
-		[self initialize];
+    if (self) {
+
+		[self setBackgroundColor:[UIColor clearColor]];
+		_font = [UIFont systemFontOfSize:15];
+		_textColor = [UIColor blackColor];
+		_text = @"";
+		_textAlignment = RTTextAlignmentLeft;
+		_lineBreakMode = RTTextLineBreakModeWordWrapping;
+		_lineSpacing = 3;
+		_currentSelectedButtonComponentIndex = -1;
+        _paragraphReplacement = @"\n";
+		
+		[self setMultipleTouchEnabled:YES];
     }
     return self;
-}
-
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{    
-    self = [super initWithCoder:aDecoder];
-    if (self)
-	{
-		[self initialize];
-    }
-    return self;
-}
-
-- (void)initialize
-{
-	[self setBackgroundColor:[UIColor clearColor]];
-
-	_font = [UIFont systemFontOfSize:15];
-	_textColor = [UIColor blackColor];
-	_text = @"";
-	_textAlignment = RTTextAlignmentLeft;
-	_lineBreakMode = RTTextLineBreakModeWordWrapping;
-	_lineSpacing = 3;
-	_currentSelectedButtonComponentIndex = -1;
-	_paragraphReplacement = @"\n";
-	
-	[self setMultipleTouchEnabled:YES];
 }
 
 - (void)setTextAlignment:(RTTextAlignment)textAlignment
@@ -308,10 +306,7 @@
 		{
 			[self applyParagraphStyleToText:attrString attributes:component.attributes atPosition:component.position withLength:[component.text length]];
 		}
-		else if ([component.tagLabel caseInsensitiveCompare:@"center"] == NSOrderedSame)
-		{
-			[self applyCenterStyleToText:attrString attributes:component.attributes atPosition:component.position withLength:[component.text length]];
-		}
+		
 	}
     
     // Create the framesetter with the attributed string.
@@ -325,7 +320,7 @@
 	
 	// Create the frame and draw it into the graphics context
 	//CTFrameRef 
-    CTFrameRef frame = CTFramesetterCreateFrame(framesetter,CFRangeMake(0, 0), path, NULL);
+	self.frameRef = CTFramesetterCreateFrame(framesetter,CFRangeMake(0, 0), path, NULL);
 	
 	CFRange range;
 	CGSize constraint = CGSizeMake(self.frame.size.width, CGFLOAT_MAX);
@@ -339,7 +334,7 @@
 		for (RTLabelComponent *linkableComponents in links)
 		{
 			float height = 0.0;
-			CFArrayRef frameLines = CTFrameGetLines(frame);
+			CFArrayRef frameLines = CTFrameGetLines(self.frameRef);
 			for (CFIndex i=0; i<CFArrayGetCount(frameLines); i++)
 			{
 				CTLineRef line = (CTLineRef)CFArrayGetValueAtIndex(frameLines, i);
@@ -349,18 +344,16 @@
 				CGFloat leading;
 				
 				CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-                CGPoint origin;
-				CTFrameGetLineOrigins(frame, CFRangeMake(i, 1), &origin);
-                
-				if ( (linkableComponents.position<lineRange.location && linkableComponents.position+linkableComponents.text.length>(u_int16_t)(lineRange.location)) || (linkableComponents.position>=lineRange.location && linkableComponents.position<lineRange.location+lineRange.length))
+				
+				if ( (linkableComponents.position<lineRange.location && linkableComponents.position+linkableComponents.text.length>lineRange.location) || (linkableComponents.position>=lineRange.location && linkableComponents.position<lineRange.location+lineRange.length))
 				{
 					CGFloat secondaryOffset;
-					CGFloat primaryOffset = CTLineGetOffsetForStringIndex(CFArrayGetValueAtIndex(frameLines,i), linkableComponents.position, &secondaryOffset);
-					CGFloat primaryOffset2 = CTLineGetOffsetForStringIndex(CFArrayGetValueAtIndex(frameLines,i), linkableComponents.position+linkableComponents.text.length, NULL);
+					double primaryOffset = CTLineGetOffsetForStringIndex(CFArrayGetValueAtIndex(frameLines,i), linkableComponents.position, &secondaryOffset);
+					double primaryOffset2 = CTLineGetOffsetForStringIndex(CFArrayGetValueAtIndex(frameLines,i), linkableComponents.position+linkableComponents.text.length, NULL);
 					
-					CGFloat button_width = primaryOffset2 - primaryOffset;
+					float button_width = primaryOffset2 - primaryOffset;
 					
-					RTLabelButton *button = [[RTLabelButton alloc] initWithFrame:CGRectMake(primaryOffset+origin.x, height, button_width, ascent+descent)];
+					RTLabelButton *button = [[RTLabelButton alloc] initWithFrame:CGRectMake(primaryOffset, height, button_width, ascent+descent)];
 					
 					[button setBackgroundColor:[UIColor colorWithWhite:0 alpha:0]];
 					[button setComponentIndex:linkableComponents.componentIndex];
@@ -372,22 +365,22 @@
                     [self addSubview:button];
 					
 				}
-				
+				CGPoint origin;
+				CTFrameGetLineOrigins(self.frameRef, CFRangeMake(i, 1), &origin);
 				origin.y = self.frame.size.height - origin.y;
 				height = origin.y + descent + _lineSpacing;
 			}
 		}
 	}
 	
-	self.visibleRange = CTFrameGetVisibleStringRange(frame);
+	self.visibleRange = CTFrameGetVisibleStringRange(self.frameRef);
 
 	CFRelease(thisFont);
 	CFRelease(path);
 	CFRelease(styleDict1);
 	CFRelease(styleDict);
 	CFRelease(framesetter);
-	CTFrameDraw(frame, context);
-    CFRelease(frame);
+	CTFrameDraw(self.frameRef, context);
 }
 
 #pragma mark -
@@ -408,11 +401,11 @@
 	CGFloat minLineHeight = 0; 
 	CGFloat paragraphSpacing = 0.0;
 	CGFloat paragraphSpacingBefore = 0.0;
-	CTTextAlignment textAlignment = (CTTextAlignment)_textAlignment;
-	CTLineBreakMode lineBreakMode = (CTLineBreakMode)_lineBreakMode;
-	CGFloat lineSpacing = _lineSpacing;
+	int textAlignment = _textAlignment;
+	int lineBreakMode = _lineBreakMode;
+	int lineSpacing = _lineSpacing;
 	
-	for (NSUInteger i=0; i<[[attributes allKeys] count]; i++)
+	for (int i=0; i<[[attributes allKeys] count]; i++)
 	{
 		NSString *key = [[attributes allKeys] objectAtIndex:i];
 		id value = [attributes objectForKey:key];
@@ -473,9 +466,8 @@
 		{ kCTParagraphStyleSpecifierAlignment, sizeof(CTTextAlignment), &textAlignment },
 		{ kCTParagraphStyleSpecifierLineBreakMode, sizeof(CTLineBreakMode), &lineBreakMode  },
 		{ kCTParagraphStyleSpecifierBaseWritingDirection, sizeof(CTWritingDirection), &direction }, 
-		{ kCTParagraphStyleSpecifierMinimumLineSpacing, sizeof(CGFloat), &lineSpacing }, // leading
-		{ kCTParagraphStyleSpecifierMaximumLineSpacing, sizeof(CGFloat), &lineSpacing }, // leading
-		{ kCTParagraphStyleSpecifierFirstLineHeadIndent, sizeof(CGFloat), &firstLineIndent },
+		{ kCTParagraphStyleSpecifierLineSpacing, sizeof(CGFloat), &lineSpacing }, // leading
+		{ kCTParagraphStyleSpecifierFirstLineHeadIndent, sizeof(CGFloat), &firstLineIndent }, 
 		{ kCTParagraphStyleSpecifierHeadIndent, sizeof(CGFloat), &headIndent }, 
 		{ kCTParagraphStyleSpecifierTailIndent, sizeof(CGFloat), &tailIndent }, 
 		{ kCTParagraphStyleSpecifierLineHeightMultiple, sizeof(CGFloat), &lineHeightMultiple }, 
@@ -494,51 +486,6 @@
     CFRelease(styleDict);
 }
 
-- (void)applyCenterStyleToText:(CFMutableAttributedStringRef)text attributes:(NSMutableDictionary*)attributes atPosition:(int)position withLength:(int)length
-{
-	CFMutableDictionaryRef styleDict = ( CFDictionaryCreateMutable( (0), 0, (0), (0) ) );
-	
-	// direction
-	CTWritingDirection direction = kCTWritingDirectionLeftToRight;
-	// leading
-	CGFloat firstLineIndent = 0.0;
-	CGFloat headIndent = 0.0;
-	CGFloat tailIndent = 0.0;
-	CGFloat lineHeightMultiple = 1.0;
-	CGFloat maxLineHeight = 0;
-	CGFloat minLineHeight = 0;
-	CGFloat paragraphSpacing = 0.0;
-	CGFloat paragraphSpacingBefore = 0.0;
-	int textAlignment = _textAlignment;
-	int lineBreakMode = _lineBreakMode;
-	int lineSpacing = (int)_lineSpacing;
-
-    textAlignment = kCTCenterTextAlignment;
-	
-	CTParagraphStyleSetting theSettings[] =
-	{
-		{ kCTParagraphStyleSpecifierAlignment, sizeof(CTTextAlignment), &textAlignment },
-		{ kCTParagraphStyleSpecifierLineBreakMode, sizeof(CTLineBreakMode), &lineBreakMode  },
-		{ kCTParagraphStyleSpecifierBaseWritingDirection, sizeof(CTWritingDirection), &direction },
-		{ kCTParagraphStyleSpecifierLineSpacing, sizeof(CGFloat), &lineSpacing },
-		{ kCTParagraphStyleSpecifierFirstLineHeadIndent, sizeof(CGFloat), &firstLineIndent },
-		{ kCTParagraphStyleSpecifierHeadIndent, sizeof(CGFloat), &headIndent },
-		{ kCTParagraphStyleSpecifierTailIndent, sizeof(CGFloat), &tailIndent },
-		{ kCTParagraphStyleSpecifierLineHeightMultiple, sizeof(CGFloat), &lineHeightMultiple },
-		{ kCTParagraphStyleSpecifierMaximumLineHeight, sizeof(CGFloat), &maxLineHeight },
-		{ kCTParagraphStyleSpecifierMinimumLineHeight, sizeof(CGFloat), &minLineHeight },
-		{ kCTParagraphStyleSpecifierParagraphSpacing, sizeof(CGFloat), &paragraphSpacing },
-		{ kCTParagraphStyleSpecifierParagraphSpacingBefore, sizeof(CGFloat), &paragraphSpacingBefore }
-	};
-	
-	CTParagraphStyleRef theParagraphRef = CTParagraphStyleCreate(theSettings, sizeof(theSettings) / sizeof(CTParagraphStyleSetting));
-	CFDictionaryAddValue( styleDict, kCTParagraphStyleAttributeName, theParagraphRef );
-	
-	CFAttributedStringSetAttributes( text, CFRangeMake(position, length), styleDict, 0 );
-	CFRelease(theParagraphRef);
-    CFRelease(styleDict);
-}
-
 - (void)applySingleUnderlineText:(CFMutableAttributedStringRef)text atPosition:(int)position withLength:(int)length
 {
 	CFAttributedStringSetAttribute(text, CFRangeMake(position, length), kCTUnderlineStyleAttributeName,  (__bridge CFNumberRef)[NSNumber numberWithInt:kCTUnderlineStyleSingle]);
@@ -551,15 +498,13 @@
 
 - (void)applyItalicStyleToText:(CFMutableAttributedStringRef)text atPosition:(int)position withLength:(int)length
 {
-    CFTypeRef actualFontRef = CFAttributedStringGetAttribute(text, position, kCTFontAttributeName, NULL);
-    CTFontRef italicFontRef = CTFontCreateCopyWithSymbolicTraits(actualFontRef, 0.0, NULL, kCTFontItalicTrait, kCTFontItalicTrait);
-    if (!italicFontRef) {
-        //fallback to system italic font
-        UIFont *font = [UIFont italicSystemFontOfSize:CTFontGetSize(actualFontRef)];
-        italicFontRef = CTFontCreateWithName ((__bridge CFStringRef)[font fontName], [font pointSize], NULL);
-    }
-    CFAttributedStringSetAttribute(text, CFRangeMake(position, length), kCTFontAttributeName, italicFontRef);
-    CFRelease(italicFontRef);
+	CTFontRef actualFontSize = CFAttributedStringGetAttribute(text, position, kCTFontAttributeName, NULL);
+	
+	UIFont *font = [UIFont boldSystemFontOfSize:CTFontGetSize(actualFontSize)];
+	CTFontRef italicFont = CTFontCreateWithName ((__bridge CFStringRef)[font fontName], [font pointSize], NULL); 
+	CFAttributedStringSetAttribute(text, CFRangeMake(position, length), kCTFontAttributeName, italicFont);
+	
+	CFRelease(italicFont);
 }
 
 - (void)applyFontAttributes:(NSDictionary*)attributes toText:(CFMutableAttributedStringRef)text atPosition:(int)position withLength:(int)length
@@ -633,32 +578,19 @@
 
 - (void)applyBoldStyleToText:(CFMutableAttributedStringRef)text atPosition:(int)position withLength:(int)length
 {
-    CFTypeRef actualFontRef = CFAttributedStringGetAttribute(text, position, kCTFontAttributeName, NULL);
-    CTFontRef boldFontRef = CTFontCreateCopyWithSymbolicTraits(actualFontRef, 0.0, NULL, kCTFontBoldTrait, kCTFontBoldTrait);
-    if (!boldFontRef) {
-        //fallback to system bold font
-        UIFont *font = [UIFont boldSystemFontOfSize:CTFontGetSize(actualFontRef)];
-        boldFontRef = CTFontCreateWithName ((__bridge CFStringRef)[font fontName], [font pointSize], NULL);
-    }
-    CFAttributedStringSetAttribute(text, CFRangeMake(position, length), kCTFontAttributeName, boldFontRef);
-    CFRelease(boldFontRef);
+	CTFontRef actualFontSize = CFAttributedStringGetAttribute(text, position, kCTFontAttributeName, NULL);
+	UIFont *font = [UIFont boldSystemFontOfSize:CTFontGetSize(actualFontSize)];
+	CTFontRef boldFont = CTFontCreateWithName ((__bridge CFStringRef)[font fontName], [font pointSize], NULL); 
+	CFAttributedStringSetAttribute(text, CFRangeMake(position, length), kCTFontAttributeName, boldFont);
+	CFRelease(boldFont);
 }
 
 - (void)applyBoldItalicStyleToText:(CFMutableAttributedStringRef)text atPosition:(int)position withLength:(int)length
 {
-    CFTypeRef actualFontRef = CFAttributedStringGetAttribute(text, position, kCTFontAttributeName, NULL);
-    CTFontRef boldItalicFontRef = CTFontCreateCopyWithSymbolicTraits(actualFontRef, 0.0, NULL, kCTFontBoldTrait | kCTFontItalicTrait , kCTFontBoldTrait | kCTFontItalicTrait);
-    if (!boldItalicFontRef) {
-        //try fallback to system boldItalic font
-        NSString *fontName = [NSString stringWithFormat:@"%@-BoldOblique", self.font.fontName];
-        boldItalicFontRef = CTFontCreateWithName ((__bridge CFStringRef)fontName, [self.font pointSize], NULL);
-    }
-    
-    if (boldItalicFontRef) {
-        CFAttributedStringSetAttribute(text, CFRangeMake(position, length), kCTFontAttributeName, boldItalicFontRef);
-        CFRelease(boldItalicFontRef);
-    }
-
+    NSString *fontName = [NSString stringWithFormat:@"%@-BoldOblique", self.font.fontName];
+	CTFontRef refFont = CTFontCreateWithName ((__bridge CFStringRef)fontName, [self.font pointSize], NULL);
+	CFAttributedStringSetAttribute(text, CFRangeMake(position, length), kCTFontAttributeName, refFont);
+	CFRelease(refFont);
 }
 
 - (void)applyColor:(NSString*)value toText:(CFMutableAttributedStringRef)text atPosition:(int)position withLength:(int)length
@@ -735,7 +667,7 @@
 	RTLabelButton *button = (RTLabelButton*)sender;
 	[self setCurrentSelectedButtonComponentIndex:-1];
 	[self setNeedsDisplay];
-
+	
 	if ([self.delegate respondsToSelector:@selector(rtLabel:didSelectLinkWithURL:)])
 	{
 		[self.delegate rtLabel:self didSelectLinkWithURL:button.url];
@@ -756,11 +688,8 @@
 
 - (void)setHighlighted:(BOOL)highlighted
 {
-    if (highlighted!=_highlighted)
-    {
-        _highlighted = highlighted;
-        [self setNeedsDisplay];
-    }
+    _highlighted = highlighted;
+    [self setNeedsDisplay];
 }
 
 - (void)setHighlightedText:(NSString *)text
@@ -787,12 +716,6 @@
 	[self setNeedsDisplay];
 }
 
-- (void)setHighlightedText:(NSString *)text extractedTextComponent:(RTLabelExtractedComponent*)extractedComponent
-{
-    _highlightedText = [text stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
-    [self setHighlightedTextComponents:extractedComponent.textComponents];
-}
-
 // http://forums.macrumors.com/showthread.php?t=925312
 // not accurate
 - (CGFloat)frameHeight:(CTFrameRef)theFrame
@@ -805,7 +728,7 @@
         CTLineGetTypographicBounds(line, &ascent,  &descent, &leading);
         height += (ascent + fabsf(descent) + leading);
     }
-    return ceilf(height);
+    return ceil(height);
 }
 
 - (void)dealloc 
@@ -813,7 +736,7 @@
     self.delegate = nil;
 }
 
-- (NSArray *)components
+- (NSArray *)components;
 {
 	NSScanner *scanner = [NSScanner scannerWithString:self.text];
 	[scanner setCharactersToBeSkipped:nil]; 
@@ -914,7 +837,7 @@
 			tag = [textComponents objectAtIndex:0];
 			//NSLog(@"start of tag: %@", tag);
 			NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
-			for (NSUInteger i=1; i<[textComponents count]; i++)
+			for (int i=1; i<[textComponents count]; i++)
 			{
 				NSArray *pair = [[textComponents objectAtIndex:i] componentsSeparatedByString:@"="];
 				if ([pair count] > 0) {
@@ -977,7 +900,7 @@
 			{
 				attributes = [NSMutableDictionary dictionary];
 				NSArray *rawAttributes = [tag componentsSeparatedByString:@" "];
-				for (NSUInteger i=1; i<[rawAttributes count]; i++)
+				for (int i=1; i<[rawAttributes count]; i++)
 				{
 					NSArray *pair = [[rawAttributes objectAtIndex:i] componentsSeparatedByString:@"="];
 					if ([pair count]==2)
@@ -1048,7 +971,7 @@
     // Scan values  
     unsigned int r, g, b;  
     [[NSScanner scannerWithString:rString] scanHexInt:&r];  
-    [[NSScanner scannerWithString:gString] scanHexInt:&g];
+    [[NSScanner scannerWithString:gString] scanHexInt:&g];  
     [[NSScanner scannerWithString:bString] scanHexInt:&b];  
 	
 	NSArray *components = [NSArray arrayWithObjects:[NSNumber numberWithFloat:((float) r / 255.0f)],[NSNumber numberWithFloat:((float) g / 255.0f)],[NSNumber numberWithFloat:((float) b / 255.0f)],[NSNumber numberWithFloat:1.0],nil];
@@ -1065,7 +988,7 @@
 
 #pragma mark deprecated methods
 
-- (void)setText:(NSString *)text extractedTextStyle:(NSDictionary*)extractTextStyle
+- (void)setText:(NSString *)text extractTextStyle:(NSDictionary*)extractTextStyle;
 {
 	_text = [text stringByReplacingOccurrencesOfString:@"<br>" withString:@"\n"];
     [self setTextComponents:[extractTextStyle objectForKey:@"textComponents"]];

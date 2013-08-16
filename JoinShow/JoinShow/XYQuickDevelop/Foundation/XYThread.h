@@ -25,7 +25,6 @@
 
 #pragma mark -
 
-#import <Foundation/Foundation.h>
 #import "XYCommon.h"
 
 
